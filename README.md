@@ -4,22 +4,35 @@
 
 # Hey, I'm Bryce
 
-I'm a Finance major and Data Science minor at CU Boulder's Leeds School of Business, graduating May 2028. I build AI tools for finance, recruiting, and getting everyday work done faster — and I spend most of my time running the campus AI club.
+Finance and Data Science at the University of Colorado Boulder, Leeds School of Business, class of 2028. I build AI tools for finance, recruiting, and getting everyday work done faster — and I spend most of my time running the campus AI club.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-111111?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/bryce-kallio)
 [![X](https://img.shields.io/badge/@kallio48905-111111?style=flat-square&logo=x&logoColor=white)](https://x.com/kallio48905)
 
-## President, CU Boulder AI Club
+## President, [AI Club at CU Boulder](https://cuaiclub.com/)
 
-I lead CU Boulder's fastest-growing club — roughly **120 students** at bi-weekly meetings, with speakers from **NVIDIA, Cisco, Apple, and Coinbase**. Sessions run from vibe coding and robotics to AI myth-busting and open debates, because the fastest way to get people building is to stop lecturing them.
+**"AI for every major."** I lead CU Boulder's fastest-growing club — roughly **120 students** at bi-weekly meetings, with speakers from **NVIDIA, Cisco, Apple, and Coinbase**. Sessions run from vibe coding and robotics to AI myth-busting and open debates, because the fastest way to get people building is to stop lecturing them.
 
 What I'm most proud of:
 
-- **Applied AI Development Program (AAIDP)** — a hands-on curriculum culminating in a capstone project **sponsored by Netlify**. The first application cycle drew a record **71 applicants** through three interview rounds.
+- **The Applied AI Development Program** — a hands-on curriculum ending in a capstone project **sponsored by Netlify**. The first application cycle drew a record **71 applicants** through three interview rounds.
 - **A 6-member external advisory board** I recruited to guide club strategy — including the co-founder and CEO of **G2**, a member of **Bain & Company's** internal innovation team, and a product manager at **Anthropic**.
 - **A 12-student analyst program** running a live engagement with **RedJade**, building a sales and lead-generation CRM while learning outreach, resume review, and client calls.
 
 The goal is that members leave having built something real and knowing why it works. If you run a student org and want to compare notes on teaching applied AI, reach out — I'd rather share what's working than have everyone rediscover it.
+
+## Harrison Street Private Wealth — Summer 2026 Analyst
+
+[Harrison Street Private Wealth](https://harrisonstpw.com/) is an SEC-registered investment advisor and a segment of the Harrison Street Asset Management platform, giving wealth managers and individuals access to institutional real-asset private markets. It sponsors three registered interval funds and an infrastructure ETF.
+
+I spent the summer on the alternatives team in Denver, selected by the CIO and COO to rebuild how the investment team measured itself. Both projects are internal systems, so there's no repo to link — but here's what they were:
+
+- **Performance attribution pipeline.** The team's attribution ran as a manual, spreadsheet-driven process that took about **three days** each cycle. I replaced it with an automated ETL pulling live data from the fund administrator, taking the same output down to **seconds**. It was adopted by the investment desk and is what they run on now.
+- **Monthly asset analysis reporting.** Built a SQL and Excel VBA automation that took a multi-hour manual reporting process **under a minute** — roughly a 95% reduction — then documented it as a standard procedure that was adopted group-wide.
+
+The lesson I took from it: the highest-leverage work in finance is usually not the analysis itself, it's removing the three days of manual assembly in front of the analysis. That's most of what I build now.
+
+**Next:** incoming Data & Analytics consulting intern at **FTI Consulting** in Washington, D.C., summer 2027.
 
 ## Building now: Coffee
 
@@ -41,15 +54,9 @@ React 19, TypeScript, Tailwind, Supabase, with row-level security scoping every 
 
 The repo holds the Python dashboard we actually run it on: live portfolio tracking off a shared Google Sheet, DCF valuation, a thesis-driven market scanner, and mandate-based allocation optimization that produces a dollar-denominated rebalance plan against our real positions. Streamlit, yfinance, and PyPortfolioOpt, behind real auth.
 
-The point was never the dashboard. It was that we wanted a thesis we could defend with numbers instead of vibes.
+The point was never the dashboard. We wanted a thesis we could defend with numbers instead of vibes.
 
 **[See the project →](https://hgb-capital.netlify.app)**
-
-## Work
-
-**FTI Consulting** — Incoming Data & Analytics Intern, Summer 2027, Washington D.C.
-
-**Harrison Street Asset Management** — Summer Analyst, Alternatives (Summer 2026). Selected by the CIO and COO to rebuild the investment team's performance attribution pipeline: I replaced a three-day manual spreadsheet process with an automated ETL pulling live data from UMB, cutting it to seconds and getting it adopted by the investment desk. Also built a SQL and Excel VBA automation for monthly asset analysis reporting that took a multi-hour process under a minute, documented it, and saw it adopted group-wide.
 
 ## Also building
 
@@ -63,7 +70,7 @@ Honest status — real projects at earlier stages, not finished products:
 
 ## On campus
 
-- **President**, CU Boulder AI Club
+- **President**, AI Club at CU Boulder
 - **Senior Analyst**, Leeds Consulting Group — selected from 166 applicants; ran an 8-week engagement for Mindful Works, a nonprofit, with a 6-person team
 - **Director of Alumni Relations**, Theta Xi
 - **Co-Founder**, Sweat Hard It's Therapy Wellness Club
@@ -71,10 +78,10 @@ Honest status — real projects at earlier stages, not finished products:
 
 ## Toolkit
 
-Python · SQL · TypeScript · React · Supabase · Claude Code · MCP · Excel/VBA · Netlify · Cloudflare
+Python · SQL · TypeScript · React · Supabase · Claude Code · MCP · Excel/VBA · ETL · Netlify · Cloudflare
 
 ## Get in touch
 
 Working on something in AI, finance, or student tech? Reach me on [LinkedIn](https://www.linkedin.com/in/bryce-kallio).
 
-<sub>Marathoner and Ironman 70.3 finisher. Will talk your ear off about bass fishing and Tom Yum soup.</sub>
+<sub>Sub-four marathoner and Ironman 70.3 finisher. Will talk your ear off about bass fishing and Tom Yum soup.</sub>
