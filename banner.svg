@@ -1,92 +1,102 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300" width="1280" height="300" fill="none" role="img" aria-label="BRYCE">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300" width="1280" height="300" role="img" aria-label="BRYCE">
 <title>Bryce Kallio</title>
+<desc>Liquid iridescent chrome letterforms reading BRYCE</desc>
+
 <defs>
-<pattern id="dots" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="1.6" cy="1.6" r="1.05" fill="#F59E0B" fill-opacity=".40"/></pattern>
-<filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <!-- Iridescent sweep. Angled rather than flat-horizontal so each letter catches a
+       different part of the spectrum instead of the whole word reading as one colour. -->
+  <linearGradient id="iri" gradientUnits="userSpaceOnUse" x1="60" y1="250" x2="1210" y2="40">
+    <stop offset="0.00" stop-color="#FF8FD4"/>
+    <stop offset="0.14" stop-color="#A97BFF"/>
+    <stop offset="0.30" stop-color="#4FB4FF"/>
+    <stop offset="0.45" stop-color="#4FE3C1"/>
+    <stop offset="0.58" stop-color="#FFD98A"/>
+    <stop offset="0.72" stop-color="#FF8FC4"/>
+    <stop offset="0.86" stop-color="#8E7BFF"/>
+    <stop offset="1.00" stop-color="#4FC8FF"/>
+  </linearGradient>
+
+  <!-- Specular pass: bright along the upper third, gone by the middle. This is what
+       makes it read as wet chrome rather than flat pastel. -->
+  <linearGradient id="sheen" gradientUnits="userSpaceOnUse" x1="0" y1="56" x2="0" y2="196">
+    <stop offset="0"    stop-color="#FFFFFF" stop-opacity=".92"/>
+    <stop offset="0.34" stop-color="#FFFFFF" stop-opacity=".30"/>
+    <stop offset="0.62" stop-color="#FFFFFF" stop-opacity="0"/>
+  </linearGradient>
+
+  <!-- Contact shadow under the forms, so they sit on the surface instead of floating. -->
+  <linearGradient id="underglow" gradientUnits="userSpaceOnUse" x1="0" y1="150" x2="0" y2="252">
+    <stop offset="0"   stop-color="#3B1D8F" stop-opacity="0"/>
+    <stop offset="1"   stop-color="#3B1D8F" stop-opacity=".62"/>
+  </linearGradient>
+
+  <!-- The melt. Blur fattens the strokes, then the alpha matrix snaps the edge back to
+       hard — so separate strokes bleed together into one blobby mass where they meet,
+       which is what gives the liquid silhouette. Raising stdDeviation melts it further. -->
+  <filter id="goo" x="-12%" y="-25%" width="124%" height="150%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="11" result="blur"/>
+    <feColorMatrix in="blur" mode="matrix"
+      values="1 0 0 0 0
+              0 1 0 0 0
+              0 0 1 0 0
+              0 0 0 26 -12" result="goo"/>
+  </filter>
+
+  <filter id="softglow" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="14"/>
+  </filter>
+
+  <!-- Letter skeletons. Thick round-capped strokes; the goo filter above turns these
+       into the molten forms. Editing a letter means editing one path here. -->
+  <g id="letterforms" fill="none" stroke="#fff" stroke-width="38"
+     stroke-linecap="round" stroke-linejoin="round">
+    <!-- B -->
+    <path d="M118,74 L118,232"/>
+    <path d="M118,74 C186,74 212,92 212,116 C212,140 186,152 118,152"/>
+    <path d="M118,152 C194,152 222,168 222,192 C222,218 194,232 118,232"/>
+    <!-- R -->
+    <path d="M330,74 L330,232"/>
+    <path d="M330,74 C398,74 424,92 424,118 C424,144 398,156 330,156"/>
+    <path d="M372,156 L430,232"/>
+    <!-- Y -->
+    <path d="M536,74 L606,158"/>
+    <path d="M676,74 L606,158"/>
+    <path d="M606,158 L606,232"/>
+    <!-- C -->
+    <path d="M884,104 C846,74 776,82 764,130 C752,182 776,226 826,228 C858,229 878,218 892,200"/>
+    <!-- E -->
+    <path d="M980,74 L980,232"/>
+    <path d="M980,74 L1086,74"/>
+    <path d="M980,152 L1060,152"/>
+    <path d="M980,232 L1090,232"/>
+  </g>
+
+  <!-- One mask drives every paint pass, so the gradient, sheen and glow all share
+       exactly the same molten silhouette. -->
+  <mask id="letters">
+    <g filter="url(#goo)">
+      <use href="#letterforms"/>
+    </g>
+  </mask>
 </defs>
-<g filter="url(#glow)">
-<g>
-<path d="M 91.0,131.0 L 148.0,31.0 L 224.0,31.0 L 281.0,131.0 L 224.0,231.0 L 148.0,231.0 Z" stroke="#B45309" stroke-opacity=".55" stroke-width="1.5"/>
-<line x1="108.0" y1="152.0" x2="91.0" y2="131.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="165.0" y1="52.0" x2="148.0" y2="31.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="241.0" y1="52.0" x2="224.0" y2="31.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="298.0" y1="152.0" x2="281.0" y2="131.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="241.0" y1="252.0" x2="224.0" y2="231.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="165.0" y1="252.0" x2="148.0" y2="231.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<path d="M 108.0,152.0 L 165.0,52.0 L 241.0,52.0 L 298.0,152.0 L 241.0,252.0 L 165.0,252.0 Z" fill="url(#dots)"/>
-<path d="M 108.0,152.0 L 165.0,52.0 L 241.0,52.0 L 298.0,152.0 L 241.0,252.0 L 165.0,252.0 Z" stroke="#F59E0B" stroke-width="2.1" stroke-linejoin="round"/>
-<path d="M 153.7,67.0 L 153.7,195.0" stroke="#B45309" stroke-opacity=".42" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 153.7,67.0 L 205.0,67.0 L 224.0,93.0 L 205.0,127.0 L 153.7,127.0" stroke="#B45309" stroke-opacity=".42" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 153.7,127.0 L 210.7,127.0 L 231.6,157.0 L 210.7,195.0 L 153.7,195.0" stroke="#B45309" stroke-opacity=".42" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 170.7,88.0 L 170.7,216.0" stroke="#FCD34D" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 170.7,88.0 L 222.0,88.0 L 241.0,114.0 L 222.0,148.0 L 170.7,148.0" stroke="#FCD34D" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 170.7,148.0 L 227.7,148.0 L 248.6,178.0 L 227.7,216.0 L 170.7,216.0" stroke="#FCD34D" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>
+
+<!-- Bloom behind the type -->
+<g mask="url(#letters)" filter="url(#softglow)" opacity=".55">
+  <rect x="0" y="0" width="1280" height="300" fill="url(#iri)"/>
 </g>
-<g>
-<path d="M 309.0,131.0 L 366.0,31.0 L 442.0,31.0 L 499.0,131.0 L 442.0,231.0 L 366.0,231.0 Z" stroke="#B45309" stroke-opacity=".55" stroke-width="1.5"/>
-<line x1="326.0" y1="152.0" x2="309.0" y2="131.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="383.0" y1="52.0" x2="366.0" y2="31.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="459.0" y1="52.0" x2="442.0" y2="31.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="516.0" y1="152.0" x2="499.0" y2="131.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="459.0" y1="252.0" x2="442.0" y2="231.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="383.0" y1="252.0" x2="366.0" y2="231.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<path d="M 326.0,152.0 L 383.0,52.0 L 459.0,52.0 L 516.0,152.0 L 459.0,252.0 L 383.0,252.0 Z" fill="url(#dots)"/>
-<path d="M 326.0,152.0 L 383.0,52.0 L 459.0,52.0 L 516.0,152.0 L 459.0,252.0 L 383.0,252.0 Z" stroke="#F59E0B" stroke-width="2.1" stroke-linejoin="round"/>
-<path d="M 371.7,67.0 L 371.7,195.0" stroke="#B45309" stroke-opacity=".42" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 371.7,67.0 L 426.8,67.0 L 445.8,97.0 L 426.8,131.0 L 371.7,131.0" stroke="#B45309" stroke-opacity=".42" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 409.7,131.0 L 447.7,195.0" stroke="#B45309" stroke-opacity=".42" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 388.7,88.0 L 388.7,216.0" stroke="#FCD34D" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 388.7,88.0 L 443.8,88.0 L 462.8,118.0 L 443.8,152.0 L 388.7,152.0" stroke="#FCD34D" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 426.7,152.0 L 464.7,216.0" stroke="#FCD34D" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>
+
+<!-- Body -->
+<g mask="url(#letters)">
+  <rect x="0" y="0" width="1280" height="300" fill="url(#iri)"/>
+  <rect x="0" y="0" width="1280" height="300" fill="url(#underglow)"/>
+  <rect x="0" y="0" width="1280" height="300" fill="url(#sheen)"/>
 </g>
-<g>
-<path d="M 527.0,131.0 L 584.0,31.0 L 660.0,31.0 L 717.0,131.0 L 660.0,231.0 L 584.0,231.0 Z" stroke="#B45309" stroke-opacity=".55" stroke-width="1.5"/>
-<line x1="544.0" y1="152.0" x2="527.0" y2="131.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="601.0" y1="52.0" x2="584.0" y2="31.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="677.0" y1="52.0" x2="660.0" y2="31.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="734.0" y1="152.0" x2="717.0" y2="131.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="677.0" y1="252.0" x2="660.0" y2="231.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="601.0" y1="252.0" x2="584.0" y2="231.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<path d="M 544.0,152.0 L 601.0,52.0 L 677.0,52.0 L 734.0,152.0 L 677.0,252.0 L 601.0,252.0 Z" fill="url(#dots)"/>
-<path d="M 544.0,152.0 L 601.0,52.0 L 677.0,52.0 L 734.0,152.0 L 677.0,252.0 L 601.0,252.0 Z" stroke="#F59E0B" stroke-width="2.1" stroke-linejoin="round"/>
-<path d="M 578.3,67.0 L 622.0,129.0" stroke="#B45309" stroke-opacity=".42" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 665.7,67.0 L 622.0,129.0" stroke="#B45309" stroke-opacity=".42" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 622.0,129.0 L 622.0,195.0" stroke="#B45309" stroke-opacity=".42" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 595.3,88.0 L 639.0,150.0" stroke="#FCD34D" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 682.7,88.0 L 639.0,150.0" stroke="#FCD34D" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 639.0,150.0 L 639.0,216.0" stroke="#FCD34D" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<g>
-<path d="M 745.0,131.0 L 802.0,31.0 L 878.0,31.0 L 935.0,131.0 L 878.0,231.0 L 802.0,231.0 Z" stroke="#B45309" stroke-opacity=".55" stroke-width="1.5"/>
-<line x1="762.0" y1="152.0" x2="745.0" y2="131.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="819.0" y1="52.0" x2="802.0" y2="31.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="895.0" y1="52.0" x2="878.0" y2="31.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="952.0" y1="152.0" x2="935.0" y2="131.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="895.0" y1="252.0" x2="878.0" y2="231.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="819.0" y1="252.0" x2="802.0" y2="231.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<path d="M 762.0,152.0 L 819.0,52.0 L 895.0,52.0 L 952.0,152.0 L 895.0,252.0 L 819.0,252.0 Z" fill="url(#dots)"/>
-<path d="M 762.0,152.0 L 819.0,52.0 L 895.0,52.0 L 952.0,152.0 L 895.0,252.0 L 819.0,252.0 Z" stroke="#F59E0B" stroke-width="2.1" stroke-linejoin="round"/>
-<path d="M 879.9,85.0 L 853.3,67.0 L 817.2,67.0 L 796.3,99.0 L 796.3,163.0 L 817.2,195.0 L 853.3,195.0 L 879.9,177.0" stroke="#B45309" stroke-opacity=".42" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 896.9,106.0 L 870.3,88.0 L 834.2,88.0 L 813.3,120.0 L 813.3,184.0 L 834.2,216.0 L 870.3,216.0 L 896.9,198.0" stroke="#FCD34D" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<g>
-<path d="M 963.0,131.0 L 1020.0,31.0 L 1096.0,31.0 L 1153.0,131.0 L 1096.0,231.0 L 1020.0,231.0 Z" stroke="#B45309" stroke-opacity=".55" stroke-width="1.5"/>
-<line x1="980.0" y1="152.0" x2="963.0" y2="131.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="1037.0" y1="52.0" x2="1020.0" y2="31.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="1113.0" y1="52.0" x2="1096.0" y2="31.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="1170.0" y1="152.0" x2="1153.0" y2="131.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="1113.0" y1="252.0" x2="1096.0" y2="231.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<line x1="1037.0" y1="252.0" x2="1020.0" y2="231.0" stroke="#B45309" stroke-opacity=".48" stroke-width="1.4"/>
-<path d="M 980.0,152.0 L 1037.0,52.0 L 1113.0,52.0 L 1170.0,152.0 L 1113.0,252.0 L 1037.0,252.0 Z" fill="url(#dots)"/>
-<path d="M 980.0,152.0 L 1037.0,52.0 L 1113.0,52.0 L 1170.0,152.0 L 1113.0,252.0 L 1037.0,252.0 Z" stroke="#F59E0B" stroke-width="2.1" stroke-linejoin="round"/>
-<path d="M 1025.7,67.0 L 1025.7,195.0" stroke="#B45309" stroke-opacity=".42" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 1025.7,67.0 L 1097.9,67.0" stroke="#B45309" stroke-opacity=".42" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 1025.7,131.0 L 1080.8,131.0" stroke="#B45309" stroke-opacity=".42" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 1025.7,195.0 L 1097.9,195.0" stroke="#B45309" stroke-opacity=".42" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 1042.7,88.0 L 1042.7,216.0" stroke="#FCD34D" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 1042.7,88.0 L 1114.9,88.0" stroke="#FCD34D" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 1042.7,152.0 L 1097.8,152.0" stroke="#FCD34D" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 1042.7,216.0 L 1114.9,216.0" stroke="#FCD34D" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
+
+<!-- Glints. Four-point stars, deliberately few — three reads as a highlight,
+     a dozen reads as clip art. -->
+<g fill="#FFFFFF" opacity=".92">
+  <path d="M1156,96 C1160,116 1166,122 1186,126 C1166,130 1160,136 1156,156 C1152,136 1146,130 1126,126 C1146,122 1152,116 1156,96 Z"/>
+  <path d="M1206,170 C1208,182 1212,186 1224,188 C1212,190 1208,194 1206,206 C1204,194 1200,190 1188,188 C1200,186 1204,182 1206,170 Z" opacity=".7"/>
+  <path d="M74,196 C77,212 82,217 98,220 C82,223 77,228 74,244 C71,228 66,223 50,220 C66,217 71,212 74,196 Z" opacity=".8"/>
 </g>
 </svg>
