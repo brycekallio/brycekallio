@@ -1,6 +1,4 @@
-<!-- Optional banner — a 1280x640 image works well here. An AI Club meeting photo
-     would be the strongest choice given it leads the page. Drag-drop it into any
-     GitHub issue comment to get a hosted URL, paste it here, delete this comment. -->
+<img src="banner.svg" alt="Bryce Kallio — building with AI at CU Boulder" width="100%">
 
 # Hey, I'm Bryce
 
