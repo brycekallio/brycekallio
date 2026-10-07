@@ -1,0 +1,63 @@
+name: Sync projects table
+
+# Keeps the README's projects table current without anyone editing the README.
+#
+# Four triggers:
+#   push            — projects.yml or the renderer changed, so re-render immediately
+#   schedule        — daily, to refresh "Last push" dates as the projects move.
+#                     This is the one that needs zero setup in the other repos.
+#   workflow_dispatch — run it by hand from the Actions tab
+#   repository_dispatch — a project repo pings this one right after its own push,
+#                     so the profile updates in seconds instead of by tomorrow.
+#                     Optional; see README-AUTOMATION.md for the per-repo snippet.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - projects.yml
+      - scripts/render-projects.mjs
+      - .github/workflows/sync-projects.yml
+  schedule:
+    # 11:00 UTC daily — early morning in Boulder, so the profile is fresh by breakfast.
+    - cron: "0 11 * * *"
+  workflow_dispatch:
+  repository_dispatch:
+    types: [project-updated]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-projects
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Render projects table
+        env:
+          # PROJECTS_TOKEN is a PAT with `repo` scope, needed to read the private
+          # repos' push dates. Without it the step still succeeds — private entries
+          # just render without a date — so a missing secret degrades rather than fails.
+          GITHUB_TOKEN: ${{ secrets.PROJECTS_TOKEN || secrets.GITHUB_TOKEN }}
+        run: node scripts/render-projects.mjs
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- README.md; then
+            echo "README.md unchanged — nothing to commit."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "chore: refresh projects table [skip ci]"
+          git push

@@ -24,35 +24,24 @@ Summer 2026 analyst on the alternatives team in Denver. Both projects were inter
 - **Rebuilt performance attribution.** It took three days by hand. The ETL I wrote does it in seconds, and the investment desk runs it now.
 - **Automated monthly asset reporting** with SQL and Excel VBA. Hours down to under a minute, documented and rolled out group-wide.
 
-## [Coffee](https://github.com/brycekallio/Coffee)
+## Co-Founder, [HGB Capital](https://hgb-capital.netlify.app)
 
-A relationship manager for people job searching. Spreadsheets don't remind you to follow up.
+An investment LLC I started with two friends in 2025. We registered it ourselves, started with $15k, and we're up about 14%. The dashboard we run it on is below.
 
-- Flags contacts you haven't talked to in 30 days, with a draft ready to send
-- Tracks applications in a table or a Kanban board
-- Matches your resume against a job description
-- Pulls action items out of meeting transcripts
-- Web app, Mac app, and a Chrome extension for LinkedIn
+## What I'm building
 
-React, TypeScript, Supabase.
+<!-- PROJECTS:START -->
+| Project | What it is | Can you use it? | Last push |
+| --- | --- | --- | --- |
+| **[Coffee](https://coffee-app-network.netlify.app)** | A relationship manager for people job searching — it flags contacts you haven't talked to in 30 days and hands you a draft to send. | **Open** — anyone can use it · [code](https://github.com/brycekallio/Coffee) | Sep 2026 |
+| **[HGB Capital dashboard](https://hgb-capital.netlify.app)** | The Python dashboard my investment LLC runs on: portfolio tracking, DCF valuation, and an optimizer that says what to rebalance. | By request · [code](https://github.com/brycekallio/HGB-Capital) | Sep 2026 |
+| **esac.ai** | Case interview practice with AI feedback — pick the case type and difficulty. | By request |  |
+| **Arbitr** | Watches local secondhand listings and flags anything priced below what it's actually worth. | Personal tool | Sep 2026 |
+| **CTRL** | An ops control plane that runs my projects from one place instead of a dozen terminal tabs. | Personal tool | Sep 2026 |
+| **Kallio Korp** | A personal AI system where one agent delegates to specialists, wired into a 3D world. | Personal tool |  |
+<!-- PROJECTS:END -->
 
-**[Try it →](https://coffee-app-network.netlify.app)**
-
-## [HGB Capital](https://github.com/brycekallio/HGB-Capital)
-
-An investment LLC I co-founded with two friends in 2025. We registered it ourselves, started with $15k, and we're up about 14%.
-
-The repo has the Python dashboard we run it on: portfolio tracking, DCF valuation, and an allocation optimizer that tells us what to rebalance.
-
-**[See it →](https://hgb-capital.netlify.app)**
-
-## Also building
-
-| Project | What it does | Status |
-| --- | --- | --- |
-| esac.ai | Case interview practice with AI feedback. Pick the case type and difficulty. | In progress |
-| Kallio Korp | A personal AI system where one agent delegates to specialists, in a 3D world | Built, private |
-| Arbitr | Watches local secondhand listings for things priced below what they're worth | Private |
+<sub>This table is generated from <a href="projects.yml">projects.yml</a>.</sub>
 
 ## On campus
 
