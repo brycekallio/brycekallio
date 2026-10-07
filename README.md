@@ -1,4 +1,4 @@
-<img src="banner.svg" alt="Bryce Kallio — building with AI at CU Boulder" width="100%">
+<img src="banner.svg" alt="BRYCE" width="100%">
 
 # Hey, I'm Bryce
 
