@@ -1,63 +1,80 @@
-<!-- Optional banner — Dawson leads with one. A 1280x640 image of the AI Club,
-     a Coffee screenshot, or a simple wordmark works. Drag-drop it into any
-     GitHub issue comment to get a hosted URL, then paste it here and delete
-     this comment. Fine to ship without it. -->
+<!-- Optional banner — a 1280x640 image works well here. An AI Club meeting photo
+     would be the strongest choice given it leads the page. Drag-drop it into any
+     GitHub issue comment to get a hosted URL, paste it here, delete this comment. -->
 
 # Hey, I'm Bryce
 
-I'm a Finance major and Data Science minor at CU Boulder's Leeds School of Business. I build AI tools for finance, recruiting, and getting everyday work done faster.
+I'm a Finance major and Data Science minor at CU Boulder's Leeds School of Business, graduating May 2028. I build AI tools for finance, recruiting, and getting everyday work done faster — and I spend most of my time running the campus AI club.
 
-My current focus is leading the **CU Boulder AI Club**, where I run the Applied AI and Development Program — a two-semester track that teaches students to actually build with AI rather than just read about it.
-
-I'm joining **FTI Consulting's** Data & Analytics practice in Washington, D.C. in 2027. Before that I interned at **Harrison Street Real Assets** and co-founded **HGB Capital**, a student-run investment LLC.
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-111111?style=flat-square&logo=linkedin&logoColor=white)](LINK_TO_LINKEDIN)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-111111?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/bryce-kallio)
 [![X](https://img.shields.io/badge/@kallio48905-111111?style=flat-square&logo=x&logoColor=white)](https://x.com/kallio48905)
+
+## President, CU Boulder AI Club
+
+I lead CU Boulder's fastest-growing club — roughly **120 students** at bi-weekly meetings, with speakers from **NVIDIA, Cisco, Apple, and Coinbase**. Sessions run from vibe coding and robotics to AI myth-busting and open debates, because the fastest way to get people building is to stop lecturing them.
+
+What I'm most proud of:
+
+- **Applied AI Development Program (AAIDP)** — a hands-on curriculum culminating in a capstone project **sponsored by Netlify**. The first application cycle drew a record **71 applicants** through three interview rounds.
+- **A 6-member external advisory board** I recruited to guide club strategy — including the co-founder and CEO of **G2**, a member of **Bain & Company's** internal innovation team, and a product manager at **Anthropic**.
+- **A 12-student analyst program** running a live engagement with **RedJade**, building a sales and lead-generation CRM while learning outreach, resume review, and client calls.
+
+The goal is that members leave having built something real and knowing why it works. If you run a student org and want to compare notes on teaching applied AI, reach out — I'd rather share what's working than have everyone rediscover it.
 
 ## Building now: Coffee
 
-[Coffee](https://github.com/brycekallio/Coffee) is a relationship manager for people job searching. Networking and recruiting both come down to the same unglamorous problem — staying in touch with the right people at the right time — and a spreadsheet never reminds you to follow up.
+[Coffee](https://github.com/brycekallio/Coffee) is a relationship manager for people job searching. Networking and recruiting come down to the same unglamorous problem — staying in touch with the right people at the right time — and a spreadsheet never reminds you to follow up.
 
 - **Stale-contact detection** — anyone you haven't logged a meeting with in 30+ days gets flagged, with a one-click follow-up draft
-- **Application tracking** in both a table and a Kanban board, from bookmarked through offer
+- **Application tracking** in both a table and a Kanban board, bookmarked through offer
 - **AI contact summaries** and resume-to-job-description matching, run server-side so there's nothing to install
-- **Analytics** on where your applications actually stand
+- **Meeting-note extraction** — drop in a transcript and it pulls out action items, professional context, and the human details worth remembering
 - Ships as a web app, a Mac desktop app, and a Chrome extension that turns any LinkedIn profile into a contact
 
-Built with React 19, TypeScript, Tailwind, and Supabase, with row-level security scoping every table to its owner.
+React 19, TypeScript, Tailwind, Supabase, with row-level security scoping every table to its owner.
 
 **[Try it →](https://coffee-app-network.netlify.app)**
 
 ## HGB Capital
 
-[HGB Capital](https://github.com/brycekallio/HGB-Capital) is a student-run investment LLC I co-founded with two friends. We stood it up from scratch — Colorado registration, EIN, operating agreement — because we wanted a thesis we could actually defend with numbers instead of vibes.
+[HGB Capital](https://github.com/brycekallio/HGB-Capital) is a three-partner investment LLC I co-founded in 2025. We stood it up from scratch — Colorado registration, EIN, operating agreement — started with **$15k in capital**, and we're up roughly **14% since inception**.
 
-The repo holds the Python dashboard we run it on: live portfolio tracking, DCF valuation, a thesis-driven market scanner, and mandate-based allocation optimization that produces a dollar-denominated rebalance plan against our real positions. Built with Streamlit, yfinance, and PyPortfolioOpt, behind Clerk auth.
+The repo holds the Python dashboard we actually run it on: live portfolio tracking off a shared Google Sheet, DCF valuation, a thesis-driven market scanner, and mandate-based allocation optimization that produces a dollar-denominated rebalance plan against our real positions. Streamlit, yfinance, and PyPortfolioOpt, behind real auth.
+
+The point was never the dashboard. It was that we wanted a thesis we could defend with numbers instead of vibes.
 
 **[See the project →](https://hgb-capital.netlify.app)**
 
-## Leading the CU Boulder AI Club
+## Work
 
-I'm President of the AI Club, where the thing I care most about is the **Applied AI and Development Program** — a two-semester track that takes students from "I've used ChatGPT" to shipping their own projects. Most AI curriculum is either too theoretical to apply or too shallow to matter; the goal here is that members leave having built something real and knowing why it works.
+**FTI Consulting** — Incoming Data & Analytics Intern, Summer 2027, Washington D.C.
 
-If you run a student org and want to compare notes on teaching applied AI, reach out — I'd rather share what's working than have everyone rediscover it.
+**Harrison Street Asset Management** — Summer Analyst, Alternatives (Summer 2026). Selected by the CIO and COO to rebuild the investment team's performance attribution pipeline: I replaced a three-day manual spreadsheet process with an automated ETL pulling live data from UMB, cutting it to seconds and getting it adopted by the investment desk. Also built a SQL and Excel VBA automation for monthly asset analysis reporting that took a multi-hour process under a minute, documented it, and saw it adopted group-wide.
 
 ## Also building
 
-Honest status on the rest — these are real projects at earlier stages, not finished products:
+Honest status — real projects at earlier stages, not finished products:
 
 | Project | What it does | Status |
 | --- | --- | --- |
-| esac.ai | Consulting case-interview practice with AI coaching tuned per firm — pick case type, difficulty, and whether you want qualitative or quantitative reps | In progress, not yet deployed |
+| esac.ai | Consulting case-interview practice with AI coaching tuned per firm — pick case type, difficulty, and whether you want qualitative or quantitative reps | In progress |
+| Kallio Korp | A personal agentic operating system: an orchestrator agent delegating to specialized agents for finance, health, research, and development, with a 3D interface built through Blender MCP | Built, private |
 | Arbitr | Watches local secondhand listings and flags the ones priced well under what the item actually sells for | Private, single-user |
 
 ## On campus
 
 - **President**, CU Boulder AI Club
-- **Senior Analyst**, Leeds Consulting Group
-- **VP of Professional Development**, Scholars of Finance
+- **Senior Analyst**, Leeds Consulting Group — selected from 166 applicants; ran an 8-week engagement for Mindful Works, a nonprofit, with a 6-person team
 - **Director of Alumni Relations**, Theta Xi
+- **Co-Founder**, Sweat Hard It's Therapy Wellness Club
+- Previously **VP of Professional Development**, Scholars of Finance — hosted 15–20 speakers from JPM, Deloitte, and BofA, and organized the first-ever SOF Summit connecting 60 underclassmen with professionals
+
+## Toolkit
+
+Python · SQL · TypeScript · React · Supabase · Claude Code · MCP · Excel/VBA · Netlify · Cloudflare
 
 ## Get in touch
 
-Working on something in AI, finance, or student tech? Reach me on [LinkedIn](LINK_TO_LINKEDIN).
+Working on something in AI, finance, or student tech? Reach me on [LinkedIn](https://www.linkedin.com/in/bryce-kallio).
+
+<sub>Marathoner and Ironman 70.3 finisher. Will talk your ear off about bass fishing and Tom Yum soup.</sub>
