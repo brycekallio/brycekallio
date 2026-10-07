@@ -16,7 +16,7 @@ I'm joining **FTI Consulting's** Data & Analytics practice in Washington, D.C. i
 
 ## Building now: Coffee
 
-[Coffee](https://github.com/brycekallio27/Coffee) is a relationship manager for people job searching. Networking and recruiting both come down to the same unglamorous problem — staying in touch with the right people at the right time — and a spreadsheet never reminds you to follow up.
+[Coffee](https://github.com/brycekallio/Coffee) is a relationship manager for people job searching. Networking and recruiting both come down to the same unglamorous problem — staying in touch with the right people at the right time — and a spreadsheet never reminds you to follow up.
 
 - **Stale-contact detection** — anyone you haven't logged a meeting with in 30+ days gets flagged, with a one-click follow-up draft
 - **Application tracking** in both a table and a Kanban board, from bookmarked through offer
@@ -30,7 +30,7 @@ Built with React 19, TypeScript, Tailwind, and Supabase, with row-level security
 
 ## HGB Capital
 
-[HGB Capital](https://github.com/brycekallio27/HGB-Capital) is a student-run investment LLC I co-founded with two friends. We stood it up from scratch — Colorado registration, EIN, operating agreement — because we wanted a thesis we could actually defend with numbers instead of vibes.
+[HGB Capital](https://github.com/brycekallio/HGB-Capital) is a student-run investment LLC I co-founded with two friends. We stood it up from scratch — Colorado registration, EIN, operating agreement — because we wanted a thesis we could actually defend with numbers instead of vibes.
 
 The repo holds the Python dashboard we run it on: live portfolio tracking, DCF valuation, a thesis-driven market scanner, and mandate-based allocation optimization that produces a dollar-denominated rebalance plan against our real positions. Built with Streamlit, yfinance, and PyPortfolioOpt, behind Clerk auth.
 
