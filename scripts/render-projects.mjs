@@ -4,6 +4,10 @@
 // Run locally:  node scripts/render-projects.mjs
 // Check only:   node scripts/render-projects.mjs --check   (exits 1 if stale)
 //
+// --check only means anything when run with the SAME token as the last render.
+// Without a token, private repos 404 and render without dates or code links, so a
+// tokenless --check against a token-rendered README always reports stale.
+//
 // "Last push" comes from the GitHub API when a token is available, so the table
 // shows real activity without anyone maintaining dates by hand. Without a token
 // (or for entries with no repo) that column is simply omitted for that row.

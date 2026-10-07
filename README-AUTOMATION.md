@@ -32,6 +32,11 @@ GITHUB_TOKEN=$(gh auth token) node scripts/render-projects.mjs   # include priva
 Without a token, private repos return 404 and are treated as private — the row still
 renders, just without a date or code link.
 
+**`--check` is only meaningful with the same token as the last render.** The rendered
+output differs depending on whether private repos resolved, so a tokenless `--check`
+against a README rendered with a token will always say "stale". Either always pass the
+token, or don't wire `--check` into a pre-commit hook.
+
 ## Adding a project
 
 Append to `projects.yml` and push. The workflow re-renders on any change to that file.
