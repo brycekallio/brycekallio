@@ -37,11 +37,16 @@
        baked in, so tracking is one number per letter to change. The gaps are wide
        (44) because the extrusion throws ~17px to the left — tighter tracking and
        each letter's depth runs into the one before it. -->
-  <g id="glyphs" fill-rule="evenodd" transform="translate(-52.5,0)">
-    <!-- B: the notch in the right edge at the waist is what separates it from an 8 -->
-    <path d="M310,60 H415 L425,70 V124 H401 V141 H425 V205 L415,215 H310 Z
-             M344,86 H399 V118 H344 Z
-             M344,157 H399 V189 H344 Z"/>
+  <g id="glyphs" fill-rule="evenodd" transform="translate(-46.5,0)">
+    <!-- B: the notch in the right edge at the waist is what separates it from an 8.
+         Pushed 12px left of its metric position: the R's bowl is wide and its leg
+         kicks further left than the other letters do, so at even tracking the B
+         reads as crowded against it even though the measured gap matches. -->
+    <g transform="translate(-12,0)">
+      <path d="M310,60 H415 L425,70 V124 H401 V141 H425 V205 L415,215 H310 Z
+               M344,86 H399 V118 H344 Z
+               M344,157 H399 V189 H344 Z"/>
+    </g>
     <!-- R. The leg kicks out past the bowl rather than dropping straight, and its
          inner edge runs from the baseline up to the bowl's underside — that open
          wedge between stem and leg is the whole difference between an R and a P. -->
