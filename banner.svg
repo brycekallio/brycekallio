@@ -20,14 +20,11 @@
     <stop offset="1.00" stop-color="#9FF4FF"/>
   </linearGradient>
 
-  <radialGradient id="halo" gradientUnits="userSpaceOnUse" cx="640" cy="148" r="580">
-    <stop offset="0"    stop-color="#8B2FD0" stop-opacity=".17"/>
-    <stop offset="0.55" stop-color="#5A1AA0" stop-opacity=".07"/>
-    <stop offset="1"    stop-color="#0A0520" stop-opacity="0"/>
-  </radialGradient>
-
+  <!-- Outer glow, deliberately held under the letter gap. Letters sit 44px apart;
+       a Gaussian reaches ~3x stdDeviation, so past ~7 the glows of adjacent letters
+       meet and the word becomes one continuous haze instead of five lit objects. -->
   <filter id="glowFar"  x="-30%" y="-60%" width="160%" height="220%">
-    <feGaussianBlur stdDeviation="17"/>
+    <feGaussianBlur stdDeviation="6.5"/>
   </filter>
   <filter id="glowNear" x="-20%" y="-40%" width="140%" height="180%">
     <feGaussianBlur stdDeviation="4.5"/>
@@ -68,12 +65,11 @@
   </g>
 </defs>
 
-<!-- No panel: the letters float on the page background, whatever it is. The only
-     thing painted behind them is the halo, whose outer stop is fully transparent. -->
-<rect width="1280" height="300" fill="url(#halo)"/>
+<!-- Nothing is painted behind the letters. Every pixel that is not part of a
+     glyph or its own glow is fully transparent. -->
 
 <!-- Sign glow spilling onto the wall behind -->
-<g filter="url(#glowFar)" opacity=".72">
+<g filter="url(#glowFar)" opacity=".8">
   <use href="#glyphs" fill="url(#edge)"/>
 </g>
 

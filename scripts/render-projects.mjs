@@ -4,13 +4,10 @@
 // Run locally:  node scripts/render-projects.mjs
 // Check only:   node scripts/render-projects.mjs --check   (exits 1 if stale)
 //
-// --check only means anything when run with the SAME token as the last render.
-// Without a token, private repos 404 and render without dates or code links, so a
-// tokenless --check against a token-rendered README always reports stale.
-//
-// "Last push" comes from the GitHub API when a token is available, so the table
-// shows real activity without anyone maintaining dates by hand. Without a token
-// (or for entries with no repo) that column is simply omitted for that row.
+// The only thing read from the GitHub API is whether a repo is public, and that
+// is only consulted for projects somebody else might use. Personal projects never
+// render a link, so their visibility is never queried — which means this renders
+// identically with or without a token, and --check is deterministic again.
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
@@ -22,11 +19,8 @@ const root = resolve(here, "..");
 const START = "<!-- PROJECTS:START -->";
 const END = "<!-- PROJECTS:END -->";
 
-const ACCESS_LABEL = {
-  open: "**Open** — anyone can use it",
-  request: "By request",
-  personal: "Personal tool",
-};
+/** Personal projects say so and link nothing; everything else links its code. */
+const PERSONAL_LABEL = "Personal";
 
 /**
  * Minimal YAML reader for the flat list-of-maps shape projects.yml uses.
@@ -94,7 +88,7 @@ function parseProjects(text) {
  * visitor, and flipping a repo public/private should not need a manifest edit.
  */
 async function repoMeta(repo, token) {
-  if (!repo) return { pushed: null, private: null };
+  if (!repo) return { private: null };
   try {
     const res = await fetch(`https://api.github.com/repos/${repo}`, {
       headers: {
@@ -105,49 +99,35 @@ async function repoMeta(repo, token) {
     });
     // Unauthenticated, a private repo is indistinguishable from a missing one —
     // both 404. Treat that as private so the link is withheld rather than broken.
-    if (res.status === 404) return { pushed: null, private: true };
-    if (!res.ok) return { pushed: null, private: null };
-    const data = await res.json();
-    return {
-      pushed: data.pushed_at ? data.pushed_at.slice(0, 10) : null,
-      private: Boolean(data.private),
-    };
+    if (res.status === 404) return { private: true };
+    if (!res.ok) return { private: null };
+    return { private: Boolean((await res.json()).private) };
   } catch {
-    return { pushed: null, private: null };
+    return { private: null };
   }
 }
 
-function monthLabel(iso) {
-  if (!iso) return "";
-  const [y, m] = iso.split("-");
-  const months = [
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
-  ];
-  return `${months[Number(m) - 1]} ${y}`;
-}
-
 function renderTable(projects) {
-  const lines = [
-    "| Project | What it is | Can you use it? | Last push |",
-    "| --- | --- | --- | --- |",
-  ];
+  const lines = ["| Project | What it is | Code |", "| --- | --- | --- |"];
 
   for (const p of projects) {
-    // Title links to the live thing if there is one, else the repo, else plain text.
     const publicRepoUrl =
       p.repo && p.private === false ? `https://github.com/${p.repo}` : null;
+
+    // Title links to the live thing if there is one, else the repo, else plain text.
     const href = p.try || publicRepoUrl;
     const title = href ? `**[${p.name}](${href})**` : `**${p.name}**`;
 
-    const access = ACCESS_LABEL[p.access] ?? p.access ?? "";
-    // Only link code that a visitor can actually open.
-    const repoLink =
-      p.repo && p.private === false ? ` · [code](https://github.com/${p.repo})` : "";
+    // Either you can go read it, or you are told plainly that you cannot. A link
+    // is only offered when it actually opens for a stranger.
+    const code =
+      p.access === "personal"
+        ? PERSONAL_LABEL
+        : publicRepoUrl
+          ? `[code](${publicRepoUrl})`
+          : PERSONAL_LABEL;
 
-    lines.push(
-      `| ${title} | ${p.sentence ?? ""} | ${access}${repoLink} | ${monthLabel(p.pushed)} |`,
-    );
+    lines.push(`| ${title} | ${p.sentence ?? ""} | ${code} |`);
   }
 
   return lines.join("\n");
@@ -165,9 +145,8 @@ if (projects.length === 0) {
 }
 
 for (const p of projects) {
-  const meta = await repoMeta(p.repo, token);
-  p.pushed = meta.pushed;
-  p.private = meta.private;
+  // Personal projects never render a link, so there is nothing to look up.
+  p.private = p.access === "personal" ? true : (await repoMeta(p.repo, token)).private;
 }
 
 const readmePath = resolve(root, "README.md");

@@ -21,14 +21,14 @@ Summer 2026 analyst on the alternatives team in Denver. Both projects were inter
 ## What I'm building
 
 <!-- PROJECTS:START -->
-| Project | What it is | Can you use it? | Last push |
-| --- | --- | --- | --- |
-| **[Coffee](https://coffee-app-network.netlify.app)** | A relationship manager for people job searching — it flags contacts you haven't talked to in 30 days and hands you a draft to send. | **Open** — anyone can use it · [code](https://github.com/brycekallio/Coffee) | Sep 2026 |
-| **[HGB Capital dashboard](https://hgb-capital.netlify.app)** | The Python dashboard my investment LLC runs on: portfolio tracking, DCF valuation, and an optimizer that says what to rebalance. | By request · [code](https://github.com/brycekallio/HGB-Capital) | Sep 2026 |
-| **esac.ai** | Case interview practice with AI feedback — pick the case type and difficulty. | By request |  |
-| **Arbitr** | Watches local secondhand listings and flags anything priced below what it's actually worth. | Personal tool |  |
-| **CTRL** | An ops control plane that runs my projects from one place instead of a dozen terminal tabs. | Personal tool |  |
-| **Kallio Korp** | A personal AI system where one agent delegates to specialists, wired into a 3D world. | Personal tool |  |
+| Project | What it is | Code |
+| --- | --- | --- |
+| **[Coffee](https://coffee-app-network.netlify.app)** | A relationship manager for people job searching — it flags contacts you haven't talked to in 30 days and hands you a draft to send. | [code](https://github.com/brycekallio/Coffee) |
+| **[HGB Capital dashboard](https://hgb-capital.netlify.app)** | The Python dashboard my investment LLC runs on: portfolio tracking, DCF valuation, and an optimizer that says what to rebalance. | [code](https://github.com/brycekallio/HGB-Capital) |
+| **esac.ai** | Case interview practice with AI feedback — pick the case type and difficulty. | Personal |
+| **Arbitr** | Watches local secondhand listings and flags anything priced below what it's actually worth. | Personal |
+| **CTRL** | An ops control plane that runs my projects from one place instead of a dozen terminal tabs. | Personal |
+| **Kallio Korp** | A personal AI system where one agent delegates to specialists, wired into a 3D world. | Personal |
 <!-- PROJECTS:END -->
 
 <sub>This table is generated from <a href="projects.yml">projects.yml</a>.</sub>
