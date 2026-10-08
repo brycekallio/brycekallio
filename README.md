@@ -1,4 +1,4 @@
-<img src="banner.svg" alt="BRYCE" width="100%">
+<img src="bryce.svg" alt="BRYCE" width="100%">
 
 I study Finance and Data Science at CU Boulder
 
