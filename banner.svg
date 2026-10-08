@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300" width="1280" height="300" role="img" aria-label="BRYCE">
 <title>Bryce Kallio</title>
-<desc>Extruded neon letterforms reading BRYCE on a grid</desc>
+<desc>Extruded neon letterforms reading BRYCE</desc>
 
 <defs>
   <!-- Face fill. Deliberately not opaque: the extrusion behind shows through, which
@@ -21,22 +21,10 @@
   </linearGradient>
 
   <radialGradient id="halo" gradientUnits="userSpaceOnUse" cx="640" cy="148" r="580">
-    <stop offset="0"    stop-color="#6E1FA8" stop-opacity=".48"/>
-    <stop offset="0.55" stop-color="#3A0F6B" stop-opacity=".26"/>
+    <stop offset="0"    stop-color="#8B2FD0" stop-opacity=".17"/>
+    <stop offset="0.55" stop-color="#5A1AA0" stop-opacity=".07"/>
     <stop offset="1"    stop-color="#0A0520" stop-opacity="0"/>
   </radialGradient>
-
-  <!-- Grid. Faint on purpose — it should read as the room the sign hangs in, not
-       as graph paper. -->
-  <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
-    <path d="M48,0 H0 V48" fill="none" stroke="#7A3BFF" stroke-opacity=".11" stroke-width="1"/>
-  </pattern>
-
-  <linearGradient id="gridFade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="300">
-    <stop offset="0"    stop-color="#090420" stop-opacity=".25"/>
-    <stop offset="0.42" stop-color="#090420" stop-opacity=".85"/>
-    <stop offset="1"    stop-color="#090420" stop-opacity=".3"/>
-  </linearGradient>
 
   <filter id="glowFar"  x="-30%" y="-60%" width="160%" height="220%">
     <feGaussianBlur stdDeviation="17"/>
@@ -80,10 +68,8 @@
   </g>
 </defs>
 
-<!-- The room -->
-<rect width="1280" height="300" fill="#090420"/>
-<rect width="1280" height="300" fill="url(#grid)"/>
-<rect width="1280" height="300" fill="url(#gridFade)"/>
+<!-- No panel: the letters float on the page background, whatever it is. The only
+     thing painted behind them is the halo, whose outer stop is fully transparent. -->
 <rect width="1280" height="300" fill="url(#halo)"/>
 
 <!-- Sign glow spilling onto the wall behind -->
