@@ -1,154 +1,148 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300" width="1280" height="300" role="img" aria-label="BRYCE">
 <title>Bryce Kallio</title>
-<desc>Holographic liquid letterforms reading BRYCE</desc>
+<desc>Extruded neon letterforms reading BRYCE on a grid</desc>
 
 <defs>
-  <!-- Base colour. Saturated rather than pastel: the lighting below adds the white,
-       so starting light would leave nothing for the highlight to be brighter than. -->
-  <linearGradient id="iri" gradientUnits="userSpaceOnUse" x1="80" y1="250" x2="1200" y2="40">
-    <stop offset="0.00" stop-color="#FF2E9F"/>
-    <stop offset="0.16" stop-color="#9B3BFF"/>
-    <stop offset="0.33" stop-color="#2E7BFF"/>
-    <stop offset="0.48" stop-color="#00D8FF"/>
-    <stop offset="0.62" stop-color="#15E8B4"/>
-    <stop offset="0.76" stop-color="#FFC247"/>
-    <stop offset="0.89" stop-color="#FF4FA0"/>
-    <stop offset="1.00" stop-color="#8A4FFF"/>
+  <!-- Face fill. Deliberately not opaque: the extrusion behind shows through, which
+       is what makes the letters read as hollow volumes rather than stickers. -->
+  <linearGradient id="face" gradientUnits="userSpaceOnUse" x1="250" y1="60" x2="1030" y2="215">
+    <stop offset="0.00" stop-color="#FF3DD0" stop-opacity=".44"/>
+    <stop offset="0.45" stop-color="#9B4DFF" stop-opacity=".38"/>
+    <stop offset="1.00" stop-color="#3DC8FF" stop-opacity=".42"/>
   </linearGradient>
 
-  <!-- The melt. Blur fattens the round-capped strokes, then the alpha matrix snaps
-       the edge back to hard, so separate strokes bleed into one blobby mass where
-       they meet. Raising stdDeviation melts it further. -->
-  <filter id="goo" x="-14%" y="-30%" width="128%" height="160%">
-    <feGaussianBlur in="SourceGraphic" stdDeviation="11" result="blur"/>
-    <feColorMatrix in="blur" mode="matrix"
-      values="1 0 0 0 0
-              0 1 0 0 0
-              0 0 1 0 0
-              0 0 0 26 -12"/>
+  <!-- Edge light. The outline carries the colour shift, not the fill, because on a
+       neon sign it is the tube that glows and the panel behind it that does not. -->
+  <linearGradient id="edge" gradientUnits="userSpaceOnUse" x1="250" y1="215" x2="1030" y2="60">
+    <stop offset="0.00" stop-color="#FF4FD8"/>
+    <stop offset="0.40" stop-color="#C77BFF"/>
+    <stop offset="0.72" stop-color="#5FE0FF"/>
+    <stop offset="1.00" stop-color="#9FF4FF"/>
+  </linearGradient>
+
+  <radialGradient id="halo" gradientUnits="userSpaceOnUse" cx="640" cy="148" r="580">
+    <stop offset="0"    stop-color="#6E1FA8" stop-opacity=".48"/>
+    <stop offset="0.55" stop-color="#3A0F6B" stop-opacity=".26"/>
+    <stop offset="1"    stop-color="#0A0520" stop-opacity="0"/>
+  </radialGradient>
+
+  <!-- Grid. Faint on purpose — it should read as the room the sign hangs in, not
+       as graph paper. -->
+  <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+    <path d="M48,0 H0 V48" fill="none" stroke="#7A3BFF" stroke-opacity=".11" stroke-width="1"/>
+  </pattern>
+
+  <linearGradient id="gridFade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="300">
+    <stop offset="0"    stop-color="#090420" stop-opacity=".25"/>
+    <stop offset="0.42" stop-color="#090420" stop-opacity=".85"/>
+    <stop offset="1"    stop-color="#090420" stop-opacity=".3"/>
+  </linearGradient>
+
+  <filter id="glowFar"  x="-30%" y="-60%" width="160%" height="220%">
+    <feGaussianBlur stdDeviation="17"/>
+  </filter>
+  <filter id="glowNear" x="-20%" y="-40%" width="140%" height="180%">
+    <feGaussianBlur stdDeviation="4.5"/>
   </filter>
 
-  <!-- What makes these solid objects instead of coloured shapes.
-       The silhouette's own alpha, blurred, becomes a height field: high in the
-       middle of a stroke, falling off at the edges. Lighting that height field
-       reads as a rounded, inflated surface, which is why the shading follows the
-       form instead of sliding across it the way a gradient does.
-       Three lights: a white key, and a cyan and a magenta rim from opposite
-       sides. The two coloured rims are the holographic part — a real iridescent
-       surface throws a different colour depending on where you catch it, and one
-       light can only ever produce one colour.
-       sRGB interpolation is not optional here; the linearRGB default washes
-       every lighting primitive out to grey. -->
-  <filter id="gloss" x="-25%" y="-45%" width="150%" height="190%" color-interpolation-filters="sRGB">
-    <feGaussianBlur in="SourceAlpha" stdDeviation="9" result="bump"/>
-
-    <!-- Body shading -->
-    <feDiffuseLighting in="bump" surfaceScale="9" diffuseConstant="0.92" lighting-color="#ffffff" result="diff">
-      <feDistantLight azimuth="228" elevation="52"/>
-    </feDiffuseLighting>
-    <!-- arithmetic k1 alone is a multiply; the 1.3 compensates for diffuse output
-         sitting below 1 across most of the surface, which would otherwise just
-         darken the whole wordmark. -->
-    <feComposite in="SourceGraphic" in2="diff" operator="arithmetic"
-                 k1="1.45" k2="0" k3="0" k4="0" result="shadedRaw"/>
-    <feComposite in="shadedRaw" in2="SourceAlpha" operator="in" result="body"/>
-
-    <!-- Key highlight: tight exponent, so it stays a glint and not a haze -->
-    <feSpecularLighting in="bump" surfaceScale="10" specularConstant="1.05"
-                        specularExponent="34" lighting-color="#ffffff" result="s1">
-      <feDistantLight azimuth="228" elevation="58"/>
-    </feSpecularLighting>
-    <feComposite in="s1" in2="SourceAlpha" operator="in" result="s1c"/>
-
-    <!-- Cyan rim, low and from the right -->
-    <feSpecularLighting in="bump" surfaceScale="10" specularConstant="0.95"
-                        specularExponent="13" lighting-color="#4FE6FF" result="s2">
-      <feDistantLight azimuth="40" elevation="20"/>
-    </feSpecularLighting>
-    <feComposite in="s2" in2="SourceAlpha" operator="in" result="s2c"/>
-
-    <!-- Magenta rim, low and from the left -->
-    <feSpecularLighting in="bump" surfaceScale="10" specularConstant="0.85"
-                        specularExponent="11" lighting-color="#FF5BC8" result="s3">
-      <feDistantLight azimuth="152" elevation="15"/>
-    </feSpecularLighting>
-    <feComposite in="s3" in2="SourceAlpha" operator="in" result="s3c"/>
-
-    <!-- Rims first, key last, each added rather than blended so highlights stack
-         toward white the way light actually does. -->
-    <feComposite in="s2c" in2="body" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="p1"/>
-    <feComposite in="s3c" in2="p1"   operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="p2"/>
-    <feComposite in="s1c" in2="p2"   operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
-  </filter>
-
-  <filter id="bloom" x="-45%" y="-60%" width="190%" height="220%">
-    <feGaussianBlur stdDeviation="20"/>
-  </filter>
-
-  <filter id="haze" x="-30%" y="-40%" width="160%" height="180%">
-    <feGaussianBlur stdDeviation="6"/>
-  </filter>
-
-  <!-- Letter skeletons. Thick round-capped strokes; the goo filter turns these into
-       the molten forms. Editing a letter means editing one path here. -->
-  <g id="letterforms" fill="none" stroke="#fff" stroke-width="38"
-     stroke-linecap="round" stroke-linejoin="round">
-    <!-- B -->
-    <path d="M118,74 L118,232"/>
-    <path d="M118,74 C186,74 212,92 212,116 C212,140 186,152 118,152"/>
-    <path d="M118,152 C194,152 222,168 222,192 C222,218 194,232 118,232"/>
-    <!-- R -->
-    <path d="M330,74 L330,232"/>
-    <path d="M330,74 C398,74 424,92 424,118 C424,144 398,156 330,156"/>
-    <path d="M372,156 L430,232"/>
-    <!-- Y -->
-    <path d="M536,74 L606,158"/>
-    <path d="M676,74 L606,158"/>
-    <path d="M606,158 L606,232"/>
-    <!-- C -->
-    <path d="M884,104 C846,74 776,82 764,130 C752,182 776,226 826,228 C858,229 878,218 892,200"/>
-    <!-- E -->
-    <path d="M980,74 L980,232"/>
-    <path d="M980,74 L1086,74"/>
-    <path d="M980,152 L1060,152"/>
-    <path d="M980,232 L1090,232"/>
-  </g>
-
-  <mask id="letters">
-    <g filter="url(#goo)">
-      <use href="#letterforms"/>
+  <!-- Letterforms. Blocky and chamfered, drawn as closed outlines so they can be
+       both filled and extruded; a stroked skeleton has no interior to extrude.
+       Cap height 60-215, stems 34, bars 28.
+       Each letter carries its own translate rather than having its coordinates
+       baked in, so tracking is one number per letter to change. The gaps are wide
+       (44) because the extrusion throws ~17px to the left — tighter tracking and
+       each letter's depth runs into the one before it. -->
+  <g id="glyphs" fill-rule="evenodd" transform="translate(-52.5,0)">
+    <!-- B: the notch in the right edge at the waist is what separates it from an 8 -->
+    <path d="M310,60 H415 L425,70 V124 H401 V141 H425 V205 L415,215 H310 Z
+             M344,86 H399 V118 H344 Z
+             M344,157 H399 V189 H344 Z"/>
+    <!-- R. The leg kicks out past the bowl rather than dropping straight, and its
+         inner edge runs from the baseline up to the bowl's underside — that open
+         wedge between stem and leg is the whole difference between an R and a P. -->
+    <g transform="translate(18,0)">
+      <path d="M451,60 H556 L566,70 V150 L580,205 L570,215 H528 L489,160 H485 V215 H451 Z
+               M485,88 H530 V128 H485 Z"/>
     </g>
-  </mask>
+    <!-- Y -->
+    <g transform="translate(50,0)">
+      <path d="M592,60 H622 L650,112 L678,60 H707 L666,135 V215 H634 V135 Z"/>
+    </g>
+    <!-- C: squared aperture with short returns, so it cannot be read as a bracket -->
+    <g transform="translate(68,0)">
+      <path d="M743,60 H838 L848,70 V100 H814 V88 H767 V187 H814 V175 H848 V205 L838,215
+               H743 L733,205 V70 Z"/>
+    </g>
+    <!-- E: short middle bar -->
+    <g transform="translate(86,0)">
+      <path d="M874,60 H979 L989,70 V88 H908 V124 H966 V152 H908 V187 H989 V205 L979,215 H874 Z"/>
+    </g>
+  </g>
 </defs>
 
-<!-- Outer bloom: the light the surface throws onto the page around it -->
-<g mask="url(#letters)" filter="url(#bloom)" opacity=".62">
-  <rect width="1280" height="300" fill="url(#iri)"/>
+<!-- The room -->
+<rect width="1280" height="300" fill="#090420"/>
+<rect width="1280" height="300" fill="url(#grid)"/>
+<rect width="1280" height="300" fill="url(#gridFade)"/>
+<rect width="1280" height="300" fill="url(#halo)"/>
+
+<!-- Sign glow spilling onto the wall behind -->
+<g filter="url(#glowFar)" opacity=".72">
+  <use href="#glyphs" fill="url(#edge)"/>
 </g>
 
-<!-- Chromatic dispersion. Two copies of the silhouette nudged in opposite
-     directions and blurred, so the edges fringe cyan one way and magenta the
-     other. Prisms split light; a hologram that does not fringe is a sticker. -->
-<g opacity=".34" filter="url(#haze)">
-  <g mask="url(#letters)" transform="translate(-5,-3)">
-    <rect width="1280" height="300" fill="#00E5FF"/>
-  </g>
-  <g mask="url(#letters)" transform="translate(5,3)">
-    <rect width="1280" height="300" fill="#FF2EC8"/>
-  </g>
+<!-- Extrusion, far face first -->
+<g>
+    <use href="#glyphs" transform="translate(-24.0,28.5)" fill="rgb(40,14,82)"/>
+    <use href="#glyphs" transform="translate(-23.2,27.5)" fill="rgb(42,14,85)"/>
+    <use href="#glyphs" transform="translate(-22.4,26.6)" fill="rgb(44,15,88)"/>
+    <use href="#glyphs" transform="translate(-21.6,25.6)" fill="rgb(47,16,91)"/>
+    <use href="#glyphs" transform="translate(-20.8,24.7)" fill="rgb(49,16,94)"/>
+    <use href="#glyphs" transform="translate(-20.0,23.8)" fill="rgb(52,17,98)"/>
+    <use href="#glyphs" transform="translate(-19.2,22.8)" fill="rgb(54,18,101)"/>
+    <use href="#glyphs" transform="translate(-18.4,21.8)" fill="rgb(56,18,104)"/>
+    <use href="#glyphs" transform="translate(-17.6,20.9)" fill="rgb(59,19,107)"/>
+    <use href="#glyphs" transform="translate(-16.8,19.9)" fill="rgb(61,20,110)"/>
+    <use href="#glyphs" transform="translate(-16.0,19.0)" fill="rgb(64,20,114)"/>
+    <use href="#glyphs" transform="translate(-15.2,18.1)" fill="rgb(66,21,117)"/>
+    <use href="#glyphs" transform="translate(-14.4,17.1)" fill="rgb(68,22,120)"/>
+    <use href="#glyphs" transform="translate(-13.6,16.1)" fill="rgb(71,22,123)"/>
+    <use href="#glyphs" transform="translate(-12.8,15.2)" fill="rgb(73,23,126)"/>
+    <use href="#glyphs" transform="translate(-12.0,14.2)" fill="rgb(76,24,130)"/>
+    <use href="#glyphs" transform="translate(-11.2,13.3)" fill="rgb(78,24,133)"/>
+    <use href="#glyphs" transform="translate(-10.4,12.3)" fill="rgb(80,25,136)"/>
+    <use href="#glyphs" transform="translate(-9.6,11.4)" fill="rgb(83,26,139)"/>
+    <use href="#glyphs" transform="translate(-8.8,10.4)" fill="rgb(85,26,142)"/>
+    <use href="#glyphs" transform="translate(-8.0,9.5)" fill="rgb(88,27,146)"/>
+    <use href="#glyphs" transform="translate(-7.2,8.5)" fill="rgb(90,28,149)"/>
+    <use href="#glyphs" transform="translate(-6.4,7.6)" fill="rgb(92,28,152)"/>
+    <use href="#glyphs" transform="translate(-5.6,6.6)" fill="rgb(95,29,155)"/>
+    <use href="#glyphs" transform="translate(-4.8,5.7)" fill="rgb(97,30,158)"/>
+    <use href="#glyphs" transform="translate(-4.0,4.8)" fill="rgb(100,30,162)"/>
+    <use href="#glyphs" transform="translate(-3.2,3.8)" fill="rgb(102,31,165)"/>
+    <use href="#glyphs" transform="translate(-2.4,2.8)" fill="rgb(104,32,168)"/>
+    <use href="#glyphs" transform="translate(-1.6,1.9)" fill="rgb(107,32,171)"/>
+    <use href="#glyphs" transform="translate(-0.8,0.9)" fill="rgb(109,33,174)"/>
 </g>
 
-<!-- The lit body -->
-<g filter="url(#gloss)">
-  <g mask="url(#letters)">
-    <rect width="1280" height="300" fill="url(#iri)"/>
-  </g>
+<!-- Back face edge, catching a little light -->
+<use href="#glyphs" transform="translate(-24.0,28.5)"
+     fill="none" stroke="#6FD9FF" stroke-opacity=".30" stroke-width="1.4"/>
+
+<!-- Front face -->
+<use href="#glyphs" fill="url(#face)"/>
+
+<!-- Chromatic split. Decks call this a glitch; it is just dispersion, and without
+     it the outline reads flat. -->
+<g opacity=".52">
+  <use href="#glyphs" transform="translate(-2.5,0)" fill="none" stroke="#00E5FF" stroke-width="2"/>
+  <use href="#glyphs" transform="translate(2.5,0)"  fill="none" stroke="#FF2ECC" stroke-width="2"/>
 </g>
 
-<!-- Glints, kept to two and placed in empty margin so neither sits on a letter
-     and reads as a blemish. -->
-<g fill="#FFFFFF">
-  <path d="M1168,92 C1172,114 1178,120 1200,124 C1178,128 1172,134 1168,156 C1164,134 1158,128 1136,124 C1158,120 1164,114 1168,92 Z" opacity=".9"/>
-  <path d="M70,198 C73,214 78,219 94,222 C78,225 73,230 70,246 C67,230 62,225 46,222 C62,219 67,214 70,198 Z" opacity=".72"/>
+<!-- The tube itself: a tight bloom under a hard core -->
+<g filter="url(#glowNear)" opacity=".9">
+  <use href="#glyphs" fill="none" stroke="url(#edge)" stroke-width="3.5"/>
 </g>
+<use href="#glyphs" fill="none" stroke="url(#edge)" stroke-width="2.2" stroke-linejoin="miter"/>
+<use href="#glyphs" fill="none" stroke="#FFFFFF" stroke-opacity=".5" stroke-width="1"/>
 </svg>
