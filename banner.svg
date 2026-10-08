@@ -1,53 +1,96 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300" width="1280" height="300" role="img" aria-label="BRYCE">
 <title>Bryce Kallio</title>
-<desc>Liquid iridescent chrome letterforms reading BRYCE</desc>
+<desc>Holographic liquid letterforms reading BRYCE</desc>
 
 <defs>
-  <!-- Iridescent sweep. Angled rather than flat-horizontal so each letter catches a
-       different part of the spectrum instead of the whole word reading as one colour. -->
-  <linearGradient id="iri" gradientUnits="userSpaceOnUse" x1="60" y1="250" x2="1210" y2="40">
-    <stop offset="0.00" stop-color="#FF8FD4"/>
-    <stop offset="0.14" stop-color="#A97BFF"/>
-    <stop offset="0.30" stop-color="#4FB4FF"/>
-    <stop offset="0.45" stop-color="#4FE3C1"/>
-    <stop offset="0.58" stop-color="#FFD98A"/>
-    <stop offset="0.72" stop-color="#FF8FC4"/>
-    <stop offset="0.86" stop-color="#8E7BFF"/>
-    <stop offset="1.00" stop-color="#4FC8FF"/>
+  <!-- Base colour. Saturated rather than pastel: the lighting below adds the white,
+       so starting light would leave nothing for the highlight to be brighter than. -->
+  <linearGradient id="iri" gradientUnits="userSpaceOnUse" x1="80" y1="250" x2="1200" y2="40">
+    <stop offset="0.00" stop-color="#FF2E9F"/>
+    <stop offset="0.16" stop-color="#9B3BFF"/>
+    <stop offset="0.33" stop-color="#2E7BFF"/>
+    <stop offset="0.48" stop-color="#00D8FF"/>
+    <stop offset="0.62" stop-color="#15E8B4"/>
+    <stop offset="0.76" stop-color="#FFC247"/>
+    <stop offset="0.89" stop-color="#FF4FA0"/>
+    <stop offset="1.00" stop-color="#8A4FFF"/>
   </linearGradient>
 
-  <!-- Specular pass: bright along the upper third, gone by the middle. This is what
-       makes it read as wet chrome rather than flat pastel. -->
-  <linearGradient id="sheen" gradientUnits="userSpaceOnUse" x1="0" y1="56" x2="0" y2="196">
-    <stop offset="0"    stop-color="#FFFFFF" stop-opacity=".92"/>
-    <stop offset="0.34" stop-color="#FFFFFF" stop-opacity=".30"/>
-    <stop offset="0.62" stop-color="#FFFFFF" stop-opacity="0"/>
-  </linearGradient>
-
-  <!-- Contact shadow under the forms, so they sit on the surface instead of floating. -->
-  <linearGradient id="underglow" gradientUnits="userSpaceOnUse" x1="0" y1="150" x2="0" y2="252">
-    <stop offset="0"   stop-color="#3B1D8F" stop-opacity="0"/>
-    <stop offset="1"   stop-color="#3B1D8F" stop-opacity=".62"/>
-  </linearGradient>
-
-  <!-- The melt. Blur fattens the strokes, then the alpha matrix snaps the edge back to
-       hard — so separate strokes bleed together into one blobby mass where they meet,
-       which is what gives the liquid silhouette. Raising stdDeviation melts it further. -->
-  <filter id="goo" x="-12%" y="-25%" width="124%" height="150%">
+  <!-- The melt. Blur fattens the round-capped strokes, then the alpha matrix snaps
+       the edge back to hard, so separate strokes bleed into one blobby mass where
+       they meet. Raising stdDeviation melts it further. -->
+  <filter id="goo" x="-14%" y="-30%" width="128%" height="160%">
     <feGaussianBlur in="SourceGraphic" stdDeviation="11" result="blur"/>
     <feColorMatrix in="blur" mode="matrix"
       values="1 0 0 0 0
               0 1 0 0 0
               0 0 1 0 0
-              0 0 0 26 -12" result="goo"/>
+              0 0 0 26 -12"/>
   </filter>
 
-  <filter id="softglow" x="-40%" y="-40%" width="180%" height="180%">
-    <feGaussianBlur stdDeviation="14"/>
+  <!-- What makes these solid objects instead of coloured shapes.
+       The silhouette's own alpha, blurred, becomes a height field: high in the
+       middle of a stroke, falling off at the edges. Lighting that height field
+       reads as a rounded, inflated surface, which is why the shading follows the
+       form instead of sliding across it the way a gradient does.
+       Three lights: a white key, and a cyan and a magenta rim from opposite
+       sides. The two coloured rims are the holographic part — a real iridescent
+       surface throws a different colour depending on where you catch it, and one
+       light can only ever produce one colour.
+       sRGB interpolation is not optional here; the linearRGB default washes
+       every lighting primitive out to grey. -->
+  <filter id="gloss" x="-25%" y="-45%" width="150%" height="190%" color-interpolation-filters="sRGB">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="9" result="bump"/>
+
+    <!-- Body shading -->
+    <feDiffuseLighting in="bump" surfaceScale="9" diffuseConstant="0.92" lighting-color="#ffffff" result="diff">
+      <feDistantLight azimuth="228" elevation="52"/>
+    </feDiffuseLighting>
+    <!-- arithmetic k1 alone is a multiply; the 1.3 compensates for diffuse output
+         sitting below 1 across most of the surface, which would otherwise just
+         darken the whole wordmark. -->
+    <feComposite in="SourceGraphic" in2="diff" operator="arithmetic"
+                 k1="1.45" k2="0" k3="0" k4="0" result="shadedRaw"/>
+    <feComposite in="shadedRaw" in2="SourceAlpha" operator="in" result="body"/>
+
+    <!-- Key highlight: tight exponent, so it stays a glint and not a haze -->
+    <feSpecularLighting in="bump" surfaceScale="10" specularConstant="1.05"
+                        specularExponent="34" lighting-color="#ffffff" result="s1">
+      <feDistantLight azimuth="228" elevation="58"/>
+    </feSpecularLighting>
+    <feComposite in="s1" in2="SourceAlpha" operator="in" result="s1c"/>
+
+    <!-- Cyan rim, low and from the right -->
+    <feSpecularLighting in="bump" surfaceScale="10" specularConstant="0.95"
+                        specularExponent="13" lighting-color="#4FE6FF" result="s2">
+      <feDistantLight azimuth="40" elevation="20"/>
+    </feSpecularLighting>
+    <feComposite in="s2" in2="SourceAlpha" operator="in" result="s2c"/>
+
+    <!-- Magenta rim, low and from the left -->
+    <feSpecularLighting in="bump" surfaceScale="10" specularConstant="0.85"
+                        specularExponent="11" lighting-color="#FF5BC8" result="s3">
+      <feDistantLight azimuth="152" elevation="15"/>
+    </feSpecularLighting>
+    <feComposite in="s3" in2="SourceAlpha" operator="in" result="s3c"/>
+
+    <!-- Rims first, key last, each added rather than blended so highlights stack
+         toward white the way light actually does. -->
+    <feComposite in="s2c" in2="body" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="p1"/>
+    <feComposite in="s3c" in2="p1"   operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="p2"/>
+    <feComposite in="s1c" in2="p2"   operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
   </filter>
 
-  <!-- Letter skeletons. Thick round-capped strokes; the goo filter above turns these
-       into the molten forms. Editing a letter means editing one path here. -->
+  <filter id="bloom" x="-45%" y="-60%" width="190%" height="220%">
+    <feGaussianBlur stdDeviation="20"/>
+  </filter>
+
+  <filter id="haze" x="-30%" y="-40%" width="160%" height="180%">
+    <feGaussianBlur stdDeviation="6"/>
+  </filter>
+
+  <!-- Letter skeletons. Thick round-capped strokes; the goo filter turns these into
+       the molten forms. Editing a letter means editing one path here. -->
   <g id="letterforms" fill="none" stroke="#fff" stroke-width="38"
      stroke-linecap="round" stroke-linejoin="round">
     <!-- B -->
@@ -71,8 +114,6 @@
     <path d="M980,232 L1090,232"/>
   </g>
 
-  <!-- One mask drives every paint pass, so the gradient, sheen and glow all share
-       exactly the same molten silhouette. -->
   <mask id="letters">
     <g filter="url(#goo)">
       <use href="#letterforms"/>
@@ -80,23 +121,34 @@
   </mask>
 </defs>
 
-<!-- Bloom behind the type -->
-<g mask="url(#letters)" filter="url(#softglow)" opacity=".55">
-  <rect x="0" y="0" width="1280" height="300" fill="url(#iri)"/>
+<!-- Outer bloom: the light the surface throws onto the page around it -->
+<g mask="url(#letters)" filter="url(#bloom)" opacity=".62">
+  <rect width="1280" height="300" fill="url(#iri)"/>
 </g>
 
-<!-- Body -->
-<g mask="url(#letters)">
-  <rect x="0" y="0" width="1280" height="300" fill="url(#iri)"/>
-  <rect x="0" y="0" width="1280" height="300" fill="url(#underglow)"/>
-  <rect x="0" y="0" width="1280" height="300" fill="url(#sheen)"/>
+<!-- Chromatic dispersion. Two copies of the silhouette nudged in opposite
+     directions and blurred, so the edges fringe cyan one way and magenta the
+     other. Prisms split light; a hologram that does not fringe is a sticker. -->
+<g opacity=".34" filter="url(#haze)">
+  <g mask="url(#letters)" transform="translate(-5,-3)">
+    <rect width="1280" height="300" fill="#00E5FF"/>
+  </g>
+  <g mask="url(#letters)" transform="translate(5,3)">
+    <rect width="1280" height="300" fill="#FF2EC8"/>
+  </g>
 </g>
 
-<!-- Glints. Four-point stars, deliberately few — three reads as a highlight,
-     a dozen reads as clip art. -->
-<g fill="#FFFFFF" opacity=".92">
-  <path d="M1156,96 C1160,116 1166,122 1186,126 C1166,130 1160,136 1156,156 C1152,136 1146,130 1126,126 C1146,122 1152,116 1156,96 Z"/>
-  <path d="M1206,170 C1208,182 1212,186 1224,188 C1212,190 1208,194 1206,206 C1204,194 1200,190 1188,188 C1200,186 1204,182 1206,170 Z" opacity=".7"/>
-  <path d="M74,196 C77,212 82,217 98,220 C82,223 77,228 74,244 C71,228 66,223 50,220 C66,217 71,212 74,196 Z" opacity=".8"/>
+<!-- The lit body -->
+<g filter="url(#gloss)">
+  <g mask="url(#letters)">
+    <rect width="1280" height="300" fill="url(#iri)"/>
+  </g>
+</g>
+
+<!-- Glints, kept to two and placed in empty margin so neither sits on a letter
+     and reads as a blemish. -->
+<g fill="#FFFFFF">
+  <path d="M1168,92 C1172,114 1178,120 1200,124 C1178,128 1172,134 1168,156 C1164,134 1158,128 1136,124 C1158,120 1164,114 1168,92 Z" opacity=".9"/>
+  <path d="M70,198 C73,214 78,219 94,222 C78,225 73,230 70,246 C67,230 62,225 46,222 C62,219 67,214 70,198 Z" opacity=".72"/>
 </g>
 </svg>

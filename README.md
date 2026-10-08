@@ -1,7 +1,5 @@
 <img src="banner.svg" alt="BRYCE" width="100%">
 
-# Hey, I'm Bryce
-
 I study Finance and Data Science at CU Boulder, class of 2028. I build AI tools for finance and recruiting.
 
 **Next:** joining [FTI Consulting](https://www.fticonsulting.com/) in Washington, D.C. as a Data & Analytics intern, summer 2027.
