@@ -1,6 +1,6 @@
 <img src="banner.svg" alt="BRYCE" width="100%">
 
-I study Finance and Data Science at CU Boulder, class of 2028. I build AI tools for finance and recruiting.
+I study Finance and Data Science at CU Boulder
 
 **Next:** joining [FTI Consulting](https://www.fticonsulting.com/) in Washington, D.C. as a Data & Analytics intern, summer 2027.
 
@@ -9,11 +9,7 @@ I study Finance and Data Science at CU Boulder, class of 2028. I build AI tools 
 
 ## President, [AI Club at CU Boulder](https://cuaiclub.com/)
 
-I run CU Boulder's fastest-growing club. About 120 students come to our bi-weekly meetings, and we've hosted speakers from NVIDIA, Cisco, Apple, and Coinbase.
-
-- Built the **Applied AI Development Program**, a hands-on course ending in a capstone sponsored by **Netlify**. 71 people applied to the first cohort.
-- Recruited a **6-person advisory board**: the CEO of **G2**, someone from **Bain's** innovation team, and a PM at **Anthropic**.
-- Run a **12-student analyst program** on a live project with **RedJade**.
+I run CU Boulder's fastest-growing club.
 
 ## [Harrison Street Private Wealth](https://harrisonstpw.com/)
 
@@ -21,10 +17,6 @@ Summer 2026 analyst on the alternatives team in Denver. Both projects were inter
 
 - **Rebuilt performance attribution.** It took three days by hand. The ETL I wrote does it in seconds, and the investment desk runs it now.
 - **Automated monthly asset reporting** with SQL and Excel VBA. Hours down to under a minute, documented and rolled out group-wide.
-
-## Co-Founder, [HGB Capital](https://hgb-capital.netlify.app)
-
-An investment LLC I started with two friends in 2025. We registered it ourselves, started with $15k, and we're up about 14%. The dashboard we run it on is below.
 
 ## What I'm building
 
@@ -40,16 +32,3 @@ An investment LLC I started with two friends in 2025. We registered it ourselves
 <!-- PROJECTS:END -->
 
 <sub>This table is generated from <a href="projects.yml">projects.yml</a>.</sub>
-
-## On campus
-
-- **Senior Analyst**, Leeds Consulting Group
-- **Director of Alumni Relations**, Theta Xi
-- **Co-Founder**, Sweat Hard It's Therapy Wellness Club
-- Previously **VP of Professional Development**, Scholars of Finance
-
-## Get in touch
-
-Building something in AI or finance? Find me on [LinkedIn](https://www.linkedin.com/in/bryce-kallio).
-
-<sub>Sub-four marathoner and Ironman 70.3 finisher.</sub>
