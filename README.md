@@ -23,7 +23,7 @@ Summer 2026 analyst on the alternatives team in Denver. Both projects were inter
 <!-- PROJECTS:START -->
 | Project | What it is | Code |
 | --- | --- | --- |
-| **[Coffee](https://coffee-app-network.netlify.app)** | A relationship manager for people job searching — it flags contacts you haven't talked to in 30 days and hands you a draft to send. | [code](https://github.com/brycekallio/Coffee) |
+| **[Coffee](https://coffee-app-network.netlify.app)** | A relationship manager for people job searching — it flags contacts you haven't talked to in 30 days and hands you a draft to send. | Personal |
 | **[HGB Capital dashboard](https://hgb-capital.netlify.app)** | The Python dashboard my investment LLC runs on: portfolio tracking, DCF valuation, and an optimizer that says what to rebalance. | [code](https://github.com/brycekallio/HGB-Capital) |
 | **esac.ai** | Case interview practice with AI feedback — pick the case type and difficulty. | Personal |
 | **Arbitr** | Watches local secondhand listings and flags anything priced below what it's actually worth. | Personal |
