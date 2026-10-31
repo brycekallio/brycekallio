@@ -11,55 +11,114 @@
 #
 # order: lowest first. Keeps the table deliberately ranked rather than alphabetical.
 
+- name: MECE & Co.
+  repo: brycekallio/esac-ai
+  try: https://mece-co.netlify.app
+  sentence: >-
+    Case interview prep: timed drills, plus full cases run as a conversation with an AI interviewer.
+  access: open
+  order: 1
+
 - name: Coffee
   repo: brycekallio/Coffee
   try: https://coffee-app-network.netlify.app
   sentence: >-
-    A relationship manager for people job searching — it flags contacts you
-    haven't talked to in 30 days and hands you a draft to send.
+    A relationship manager for people job searching — it flags contacts you haven't talked to in 30 days and hands you a draft to send.
   access: open
-  order: 1
+  order: 2
 
 - name: HGB Capital dashboard
   repo: brycekallio/HGB-Capital
   try: https://hgb-capital.netlify.app
   sentence: >-
-    The Python dashboard my investment LLC runs on: portfolio tracking, DCF
-    valuation, and an optimizer that says what to rebalance.
-  access: request
-  order: 2
-
-- name: esac.ai
-  repo: null
-  try: null
-  sentence: >-
-    Case interview practice with AI feedback — pick the case type and difficulty.
+    The Python dashboard my investment LLC runs on: portfolio tracking, DCF valuation, and an optimizer that says what to rebalance.
   access: request
   order: 3
 
-- name: Arbitr
-  repo: brycekallio/arbitr
+- name: AI Club OS
+  repo: brycekallio/ai-club
   try: null
   sentence: >-
-    Watches local secondhand listings and flags anything priced below what it's
-    actually worth.
+    The operating system for the club, plus a public chatbot that answers questions from the club's own content.
   access: personal
   order: 4
 
-- name: CTRL
-  repo: brycekallio/ctrl
+- name: POC
+  repo: brycekallio/poc
   try: null
   sentence: >-
-    An ops control plane that runs my projects from one place instead of a dozen
-    terminal tabs.
-  access: personal
+    A Chrome extension that coaches you to write better prompts before you send them.
+  access: open
   order: 5
 
-- name: Kallio Korp
-  repo: null
+- name: Covert
+  repo: brycekallio/covert
   try: null
   sentence: >-
-    A personal AI system where one agent delegates to specialists, wired into a
-    3D world.
+    A trust layer for AI agents, so they can verify each other and keep a receipt of what they did.
   access: personal
   order: 6
+
+- name: Shifter
+  repo: brycekallio/shifter
+  try: null
+  sentence: >-
+    Turns a recording or link into a transcript on your own Mac, with nothing sent to the cloud.
+  access: personal
+  order: 7
+
+- name: PYA
+  repo: brycekallio/pya
+  try: null
+  sentence: >-
+    Study-abroad planning: trip setup for any city, with curated guides for five of them.
+  access: personal
+  order: 8
+
+- name: Scraps
+  repo: brycekallio/scraps
+  try: null
+  sentence: >-
+    Text it a link and it tells you whether a new AI tool is worth your time.
+  access: personal
+  order: 9
+
+- name: Muse.fb
+  repo: brycekallio/arbitr
+  try: null
+  sentence: >-
+    Watches Facebook Marketplace and flags anything priced below what it's actually worth.
+  access: personal
+  order: 10
+
+- name: P-ARB-K
+  repo: brycekallio/p-arb-k
+  try: null
+  sentence: >-
+    Spots price gaps between Polymarket and Kalshi.
+  access: personal
+  order: 11
+
+- name: Thankz
+  repo: brycekallio/thankz
+  try: null
+  sentence: >-
+    Drafts your post-meeting follow-ups from Granola notes.
+  access: personal
+  order: 12
+
+- name: Inform-AI-tion
+  repo: brycekallio/inform-ai-tion
+  try: null
+  sentence: >-
+    Turns AI podcast clips into posts for social.
+  access: personal
+  order: 13
+
+- name: Sunzu
+  repo: brycekallio/sunzu-engagement
+  try: null
+  sentence: >-
+    Drafts personalized LinkedIn notes for sales reps to edit and send themselves.
+  access: personal
+  order: 14

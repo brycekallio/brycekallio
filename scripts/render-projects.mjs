@@ -19,8 +19,8 @@ const root = resolve(here, "..");
 const START = "<!-- PROJECTS:START -->";
 const END = "<!-- PROJECTS:END -->";
 
-/** Personal projects say so and link nothing; everything else links its code. */
-const PERSONAL_LABEL = "Personal";
+/** Anything without public code says so plainly; everything else links its code. */
+const PRIVATE_LABEL = "Private";
 
 /**
  * Minimal YAML reader for the flat list-of-maps shape projects.yml uses.
@@ -122,10 +122,10 @@ function renderTable(projects) {
     // is only offered when it actually opens for a stranger.
     const code =
       p.access === "personal"
-        ? PERSONAL_LABEL
+        ? PRIVATE_LABEL
         : publicRepoUrl
           ? `[code](${publicRepoUrl})`
-          : PERSONAL_LABEL;
+          : PRIVATE_LABEL;
 
     lines.push(`| ${title} | ${p.sentence ?? ""} | ${code} |`);
   }

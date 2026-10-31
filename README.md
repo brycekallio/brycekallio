@@ -23,12 +23,20 @@ Summer 2026 analyst on the alternatives team in Denver. Both projects were inter
 <!-- PROJECTS:START -->
 | Project | What it is | Code |
 | --- | --- | --- |
-| **[Coffee](https://coffee-app-network.netlify.app)** | A relationship manager for people job searching — it flags contacts you haven't talked to in 30 days and hands you a draft to send. | Personal |
+| **[MECE & Co.](https://mece-co.netlify.app)** | Case interview prep: timed drills, plus full cases run as a conversation with an AI interviewer. | Private |
+| **[Coffee](https://coffee-app-network.netlify.app)** | A relationship manager for people job searching — it flags contacts you haven't talked to in 30 days and hands you a draft to send. | [code](https://github.com/brycekallio/Coffee) |
 | **[HGB Capital dashboard](https://hgb-capital.netlify.app)** | The Python dashboard my investment LLC runs on: portfolio tracking, DCF valuation, and an optimizer that says what to rebalance. | [code](https://github.com/brycekallio/HGB-Capital) |
-| **esac.ai** | Case interview practice with AI feedback — pick the case type and difficulty. | Personal |
-| **Arbitr** | Watches local secondhand listings and flags anything priced below what it's actually worth. | Personal |
-| **CTRL** | An ops control plane that runs my projects from one place instead of a dozen terminal tabs. | Personal |
-| **Kallio Korp** | A personal AI system where one agent delegates to specialists, wired into a 3D world. | Personal |
+| **AI Club OS** | The operating system for the club, plus a public chatbot that answers questions from the club's own content. | Private |
+| **[POC](https://github.com/brycekallio/poc)** | A Chrome extension that coaches you to write better prompts before you send them. | [code](https://github.com/brycekallio/poc) |
+| **Covert** | A trust layer for AI agents, so they can verify each other and keep a receipt of what they did. | Private |
+| **Shifter** | Turns a recording or link into a transcript on your own Mac, with nothing sent to the cloud. | Private |
+| **PYA** | Study-abroad planning: trip setup for any city, with curated guides for five of them. | Private |
+| **Scraps** | Text it a link and it tells you whether a new AI tool is worth your time. | Private |
+| **Muse.fb** | Watches Facebook Marketplace and flags anything priced below what it's actually worth. | Private |
+| **P-ARB-K** | Spots price gaps between Polymarket and Kalshi. | Private |
+| **Thankz** | Drafts your post-meeting follow-ups from Granola notes. | Private |
+| **Inform-AI-tion** | Turns AI podcast clips into posts for social. | Private |
+| **Sunzu** | Drafts personalized LinkedIn notes for sales reps to edit and send themselves. | Private |
 <!-- PROJECTS:END -->
 
 <sub>This table is generated from <a href="projects.yml">projects.yml</a>.</sub>
