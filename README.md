@@ -25,7 +25,7 @@ Summer 2026 analyst on the alternatives team in Denver. Both projects were inter
 | --- | --- | --- |
 | **[MECE & Co.](https://mece-co.netlify.app)** | Case interview prep: timed drills, plus full cases run as a conversation with an AI interviewer. | Private |
 | **[Coffee](https://coffee-app-network.netlify.app)** | A relationship manager for people job searching — it flags contacts you haven't talked to in 30 days and hands you a draft to send. | [code](https://github.com/brycekallio/Coffee) |
-| **[HGB Capital dashboard](https://hgb-capital.netlify.app)** | The Python dashboard my investment LLC runs on: portfolio tracking, DCF valuation, and an optimizer that says what to rebalance. | [code](https://github.com/brycekallio/HGB-Capital) |
+| **[HGB Capital dashboard](https://hgb-capital.netlify.app)** | The Python dashboard my investment LLC runs on: portfolio tracking, DCF valuation, and an optimizer that says what to rebalance. | Private |
 | **AI Club OS** | The operating system for the club, plus a public chatbot that answers questions from the club's own content. | Private |
 | **[POC](https://github.com/brycekallio/poc)** | A Chrome extension that coaches you to write better prompts before you send them. | [code](https://github.com/brycekallio/poc) |
 | **Covert** | A trust layer for AI agents, so they can verify each other and keep a receipt of what they did. | Private |
