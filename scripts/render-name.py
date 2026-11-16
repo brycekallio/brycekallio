@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Builds the name banner at the top of README.md.
 
-Run:  python3 scripts/render-name.py <font.ttf> [--cap 92] [--out name]
+Run:  python3 scripts/render-name.py <font.ttf> [--cap 106] [--out name]
 Out:  <out>-dark.svg, <out>-light.svg
 
 Look: a black-and-white hologram. Slanted outlined letters with a see-through
@@ -28,7 +28,7 @@ from fontTools.ttLib import TTFont
 TEXT = "BRYCE KALLIO"
 VIEW_W = 1280  # matches the ticker so the two line up at width="100%"
 PAD_TOP = 16
-PAD_BOTTOM = 44  # breathing room between the name and the ticker below it
+PAD_BOTTOM = 76  # breathing room between the name and the ticker below it
 WORD_GAP = 0.5  # extra space between the two words, as a multiple of cap height
 SLANT = 12  # degrees
 LAYERS = 16  # copies in the depth stack
@@ -84,8 +84,8 @@ def build(font_path: str, cap: float, out: str) -> None:
         dx, dy = STEP[0] * i, STEP[1] * i
         # Every fourth copy keeps a faint outline, which reads as the ribs of light
         # in a projected hologram; the rest are only a thin wash that builds up.
-        rib = ' stroke="currentColor" stroke-width="1" stroke-opacity=".22"' if i % 4 == 0 else ""
-        stack.append(f'<use href="#w" x="{dx:.2f}" y="{dy:.2f}" fill-opacity=".05"{rib}/>')
+        rib = ' stroke="currentColor" stroke-width="1" stroke-opacity=".14"' if i % 4 == 0 else ""
+        stack.append(f'<use href="#w" x="{dx:.2f}" y="{dy:.2f}" fill-opacity=".035"{rib}/>')
 
     height = round(PAD_TOP + cap + depth_y + PAD_BOTTOM)
     for theme, colour in INKS.items():
@@ -95,11 +95,11 @@ def build(font_path: str, cap: float, out: str) -> None:
   <g id="w">
 {chr(10).join(paths)}
   </g>
-  <filter id="glow" x="-5%" y="-40%" width="110%" height="180%"><feGaussianBlur stdDeviation="5"/></filter>
+  <filter id="glow" x="-5%" y="-40%" width="110%" height="180%"><feGaussianBlur stdDeviation="3"/></filter>
 </defs>
 <g transform="translate({left:.1f} 0) translate(0 {base}) skewX(-{SLANT}) translate(0 -{base})" fill="currentColor" stroke-linejoin="round">
   {chr(10).join("  " + s for s in stack).strip()}
-  <use href="#w" fill="none" stroke="currentColor" stroke-width="5" opacity=".45" filter="url(#glow)"/>
+  <use href="#w" fill="none" stroke="currentColor" stroke-width="4" opacity=".18" filter="url(#glow)"/>
   <use href="#w" fill-opacity=".16" stroke="currentColor" stroke-width="2.4"/>
 </g>
 </svg>
@@ -111,7 +111,7 @@ def build(font_path: str, cap: float, out: str) -> None:
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("font")
-    ap.add_argument("--cap", type=float, default=92)
+    ap.add_argument("--cap", type=float, default=106)
     ap.add_argument("--out", default="name")
     a = ap.parse_args()
     build(a.font, a.cap, a.out)

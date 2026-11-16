@@ -6,10 +6,9 @@
   <source media="(prefers-color-scheme: dark)" srcset="ticker-dark.svg">
   <img src="ticker-light.svg" alt="Projects: MECE &amp; Co., Coffee, HGB Capital, AI Club, POC, Diffuse, Rig, Inform-AI-tion" width="100%">
 </picture>
+<br><br>
 
-I study Finance and Data Science at CU Boulder
-
-**Next:** joining [FTI Consulting](https://www.fticonsulting.com/) in Washington, D.C. as a Data & Analytics intern, summer 2027.
+President of [CU Boulder's AI Club](https://cuaiclub.com/). Finance + Data Science. Incoming [FTI Consulting](https://www.fticonsulting.com/) Data & Analytics intern, summer 2027.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-111111?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/bryce-kallio)
 [![X](https://img.shields.io/badge/@kallio48905-111111?style=flat-square&logo=x&logoColor=white)](https://x.com/kallio48905)
