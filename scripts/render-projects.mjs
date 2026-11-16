@@ -114,9 +114,9 @@ function renderTable(projects) {
     const publicRepoUrl =
       p.repo && p.private === false ? `https://github.com/${p.repo}` : null;
 
-    // Title links to the live thing if there is one, else the repo, else plain text.
-    const href = p.try || publicRepoUrl;
-    const title = href ? `**[${p.name}](${href})**` : `**${p.name}**`;
+    // Title links only to the live thing. The repo link lives in the Code column,
+    // so no URL ever appears twice on the profile.
+    const title = p.try ? `**[${p.name}](${p.try})**` : `**${p.name}**`;
 
     // Either you can go read it, or you are told plainly that you cannot. A link
     // is only offered when it actually opens for a stranger.
