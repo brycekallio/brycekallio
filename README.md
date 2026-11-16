@@ -33,7 +33,7 @@ Summer 2026 analyst, alternatives team, Denver. Internal systems, so no public c
 | **[Coffee](https://coffee-app-network.netlify.app)** | A networking CRM for job seekers. Flags contacts you've gone quiet on and drafts the follow-up. | [code](https://github.com/brycekallio/Coffee) |
 | **[HGB Capital dashboard](https://hgb-capital.netlify.app)** | Runs my investment LLC: portfolio tracking, DCF valuation and a rebalancing optimizer. | Private |
 | **AI Club OS** | The club's operating system, plus a public chatbot that answers from the club's own content. | Private |
-| **POC** | A Chrome extension that coaches you to write better prompts before you send them. | [code](https://github.com/brycekallio/poc) |
+| **[POC](https://poc-prompt-coach.netlify.app)** | A Chrome extension that coaches you to write better prompts before you send them. | [code](https://github.com/brycekallio/poc) |
 | **Diffuse** | An open marketplace where AI agents trade sealed offers and close deals with signed receipts. | Private |
 | **Shifter** | Turns a recording or link into a transcript on your Mac. Nothing goes to the cloud. | Private |
 | **PYA** | Study-abroad trip planning for any city, with curated guides for five. | Private |

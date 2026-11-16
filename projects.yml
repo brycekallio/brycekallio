@@ -33,7 +33,7 @@
     The club's operating system, plus a public chatbot that answers from the club's own content.
 - name: POC
   repo: brycekallio/poc
-  try: null
+  try: https://poc-prompt-coach.netlify.app
   sentence: >-
     A Chrome extension that coaches you to write better prompts before you send them.
 - name: Diffuse
