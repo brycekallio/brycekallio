@@ -51,11 +51,12 @@
   access: open
   order: 5
 
-- name: Covert
-  repo: brycekallio/covert
+- name: Diffuse
+  repo: brycekallio/diffuse
   try: null
   sentence: >-
-    A trust layer for AI agents, so they can verify each other and keep a receipt of what they did.
+    An open marketplace where AI agents trade sealed offers and close deals
+    that end in signed receipts.
   access: personal
   order: 6
 
@@ -83,29 +84,13 @@
   access: personal
   order: 9
 
-- name: Muse.fb
-  repo: brycekallio/arbitr
-  try: null
-  sentence: >-
-    Watches Facebook Marketplace and flags anything priced below what it's actually worth.
-  access: personal
-  order: 10
-
 - name: P-ARB-K
   repo: brycekallio/p-arb-k
   try: null
   sentence: >-
     Spots price gaps between Polymarket and Kalshi.
   access: personal
-  order: 11
-
-- name: Thankz
-  repo: brycekallio/thankz
-  try: null
-  sentence: >-
-    Drafts your post-meeting follow-ups from Granola notes.
-  access: personal
-  order: 12
+  order: 10
 
 - name: Inform-AI-tion
   repo: brycekallio/inform-ai-tion
@@ -113,12 +98,13 @@
   sentence: >-
     Turns AI podcast clips into posts for social.
   access: personal
-  order: 13
+  order: 11
 
-- name: Sunzu
-  repo: brycekallio/sunzu-engagement
+- name: Rig
+  repo: brycekallio/rig
   try: null
   sentence: >-
-    Drafts personalized LinkedIn notes for sales reps to edit and send themselves.
+    Describe a project, answer a short survey, and get a starter kit for Claude
+    Code, Codex and Cursor installed into your repo.
   access: personal
-  order: 14
+  order: 12

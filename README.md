@@ -1,4 +1,11 @@
-<img src="bryce.svg" alt="BRYCE" width="100%">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="name-dark.svg">
+  <img src="name-light.svg" alt="Bryce Kallio" width="100%">
+</picture>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="ticker-dark.svg">
+  <img src="ticker-light.svg" alt="Projects: MECE &amp; Co., Coffee, HGB Capital, AI Club, POC, Diffuse, Rig, Inform-AI-tion" width="100%">
+</picture>
 
 I study Finance and Data Science at CU Boulder
 
@@ -28,15 +35,13 @@ Summer 2026 analyst on the alternatives team in Denver. Both projects were inter
 | **[HGB Capital dashboard](https://hgb-capital.netlify.app)** | The Python dashboard my investment LLC runs on: portfolio tracking, DCF valuation, and an optimizer that says what to rebalance. | Private |
 | **AI Club OS** | The operating system for the club, plus a public chatbot that answers questions from the club's own content. | Private |
 | **[POC](https://github.com/brycekallio/poc)** | A Chrome extension that coaches you to write better prompts before you send them. | [code](https://github.com/brycekallio/poc) |
-| **Covert** | A trust layer for AI agents, so they can verify each other and keep a receipt of what they did. | Private |
+| **Diffuse** | An open marketplace where AI agents trade sealed offers and close deals that end in signed receipts. | Private |
 | **Shifter** | Turns a recording or link into a transcript on your own Mac, with nothing sent to the cloud. | Private |
 | **PYA** | Study-abroad planning: trip setup for any city, with curated guides for five of them. | Private |
 | **Scraps** | Text it a link and it tells you whether a new AI tool is worth your time. | Private |
-| **Muse.fb** | Watches Facebook Marketplace and flags anything priced below what it's actually worth. | Private |
 | **P-ARB-K** | Spots price gaps between Polymarket and Kalshi. | Private |
-| **Thankz** | Drafts your post-meeting follow-ups from Granola notes. | Private |
 | **Inform-AI-tion** | Turns AI podcast clips into posts for social. | Private |
-| **Sunzu** | Drafts personalized LinkedIn notes for sales reps to edit and send themselves. | Private |
+| **Rig** | Describe a project, answer a short survey, and get a starter kit for Claude Code, Codex and Cursor installed into your repo. | Private |
 <!-- PROJECTS:END -->
 
 <sub>This table is generated from <a href="projects.yml">projects.yml</a>.</sub>
