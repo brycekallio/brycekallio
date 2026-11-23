@@ -68,6 +68,6 @@
     Turns AI podcast clips into social posts.
 - name: Rig
   repo: brycekallio/rig
-  try: null
+  try: https://rig-kit.netlify.app
   sentence: >-
     Describe a project, answer a short survey, get a Claude Code, Codex and Cursor starter kit in your repo.

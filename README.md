@@ -40,5 +40,5 @@ Summer 2026 analyst, alternatives team, Denver. Internal systems, so no public c
 | **Scraps** | Text it a link; it tells you if a new AI tool is worth your time. | Private |
 | **P-ARB-K** | Spots price gaps between Polymarket and Kalshi. | Private |
 | **Inform-AI-tion** | Turns AI podcast clips into social posts. | Private |
-| **Rig** | Describe a project, answer a short survey, get a Claude Code, Codex and Cursor starter kit in your repo. | Private |
+| **[Rig](https://rig-kit.netlify.app)** | Describe a project, answer a short survey, get a Claude Code, Codex and Cursor starter kit in your repo. | Private |
 <!-- PROJECTS:END -->
